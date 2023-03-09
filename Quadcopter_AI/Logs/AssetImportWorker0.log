@@ -1,0 +1,292 @@
+Using pre-set license
+Built from '2021.3/staging' branch; Version is '2021.3.19f1 (c9714fde33b6) revision 13201743'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22000) 64bit Professional' Language: 'ru' Physical Memory: 8028 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.3.19f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/Алёна/Documents/Quad_new/Quadcopter/Quadcopter_AI
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+58267
+Successfully changed project path to: C:/Users/Алёна/Documents/Quad_new/Quadcopter/Quadcopter_AI
+C:/Users/Алёна/Documents/Quad_new/Quadcopter/Quadcopter_AI
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [30060] Host "[IP] 192.168.0.101 [Port] 0 [Flags] 2 [Guid] 2729500245 [EditorId] 2729500245 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-8J7UDKE) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [30060] Host "[IP] 192.168.0.101 [Port] 0 [Flags] 2 [Guid] 2729500245 [EditorId] 2729500245 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-8J7UDKE) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+Refreshing native plugins compatible for Editor in 75.46 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.19f1 (c9714fde33b6)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.19f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Алёна/Documents/Quad_new/Quadcopter/Quadcopter_AI/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1650 (ID=0x1f99)
+    Vendor:   NVIDIA
+    VRAM:     3962 MB
+    Driver:   31.0.15.1691
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.19f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.19f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.19f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56000
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.19f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.19f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.004350 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 85.08 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.597 seconds
+Domain Reload Profiling:
+	ReloadAssembly (598ms)
+		BeginReloadAssembly (68ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (430ms)
+			LoadAssemblies (66ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (107ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (28ms)
+			SetupLoadedEditorAssemblies (245ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (85ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (108ms)
+				ProcessInitializeOnLoadMethodAttributes (44ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.003454 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\Алёна\Documents\Quad_new\Quadcopter\Quadcopter_AI\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\Алёна\Documents\Quad_new\Quadcopter\Quadcopter_AI\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.49 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.952 seconds
+Domain Reload Profiling:
+	ReloadAssembly (953ms)
+		BeginReloadAssembly (96ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (18ms)
+		EndReloadAssembly (745ms)
+			LoadAssemblies (75ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (270ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (48ms)
+			SetupLoadedEditorAssemblies (313ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (77ms)
+				ProcessInitializeOnLoadAttributes (206ms)
+				ProcessInitializeOnLoadMethodAttributes (17ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 0.90 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3066 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 24 unused Assets / (113.5 KB). Loaded Objects now: 3526.
+Memory consumption went from 108.1 MB to 108.0 MB.
+Total: 4.213300 ms (FindLiveObjects: 0.450800 ms CreateObjectMapping: 0.410900 ms MarkObjects: 3.192300 ms  DeleteObjects: 0.157000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 609579.792212 seconds.
+  path: Assets/Packages/DroneExplorer
+  artifactKey: Guid(0b20ab29f50017242b6fae8edd545dca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer using Guid(0b20ab29f50017242b6fae8edd545dca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54c63eb730654bd2638c7202127d4ca2') in 0.015010 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Packages/DroneExplorer/UI
+  artifactKey: Guid(e87d23736bf07f24ab05b92d71800b10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/UI using Guid(e87d23736bf07f24ab05b92d71800b10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c91d8567c3cc5c9416fd45bd493833b4') in 0.007769 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000052 seconds.
+  path: Assets/Packages/DroneExplorer/UI/Star3.png
+  artifactKey: Guid(0e06c82735813764cbfdc4b0c619e1c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/UI/Star3.png using Guid(0e06c82735813764cbfdc4b0c619e1c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1cd04ba2625fc16c7dd7bf4d5236c45d') in 0.078723 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000086 seconds.
+  path: Assets/Packages/DroneExplorer/UI/Star1.png
+  artifactKey: Guid(69961b03caaa41d4d8d430e1d0e930aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/UI/Star1.png using Guid(69961b03caaa41d4d8d430e1d0e930aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68cc546a887f06e32d5119b690e1b721') in 0.021469 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.454330 seconds.
+  path: Assets/Packages/DroneExplorer/Prefab/CombatContainer.prefab
+  artifactKey: Guid(d9c577e6387692d4baa39d9ce20b61a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/Prefab/CombatContainer.prefab using Guid(d9c577e6387692d4baa39d9ce20b61a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e91cc13fe83e1533c37fcf2ec2227c7f') in 0.270236 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Packages/DroneExplorer/Prefab/GateRaceContainer.prefab
+  artifactKey: Guid(ba806c8d700ff4348acff9158096ade0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/Prefab/GateRaceContainer.prefab using Guid(ba806c8d700ff4348acff9158096ade0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e91b02ff3e5da6308aa71cb2a9066993') in 0.124095 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.411721 seconds.
+  path: Assets/Packages/DroneExplorer/Prefab/Materials
+  artifactKey: Guid(9e3b9e97f816b0448af2b87d9969c276) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/Prefab/Materials using Guid(9e3b9e97f816b0448af2b87d9969c276) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '651a31ef48fb99faa347eb72255ead77') in 0.008481 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.094709 seconds.
+  path: Assets/Packages/DroneExplorer/Prefab/Materials/Body.mat
+  artifactKey: Guid(0d2b78fc2b4a7bf4ba9a713274442ad2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/Prefab/Materials/Body.mat using Guid(0d2b78fc2b4a7bf4ba9a713274442ad2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88bd03116db38e473d8f66cb65f8c08c') in 0.042034 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Packages/DroneExplorer/Prefab/Materials/DroneTarget.mat
+  artifactKey: Guid(25e73ad134f95904a8bc548d79a6e10e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/Prefab/Materials/DroneTarget.mat using Guid(25e73ad134f95904a8bc548d79a6e10e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4bc9feb17215cf7062e5e3092585dafd') in 0.009221 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Packages/DroneExplorer/Prefab/Materials/Sprite.mat
+  artifactKey: Guid(5ad24d2a9ead35d48bcf115b3acfde2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/Prefab/Materials/Sprite.mat using Guid(5ad24d2a9ead35d48bcf115b3acfde2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1bcfdeef8174c1b8158ab7a4e7f8b07e') in 0.046781 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Packages/DroneExplorer/Prefab/Materials/CrossHair.png
+  artifactKey: Guid(1d21b9719803e514a98e47859e6f6b23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/Prefab/Materials/CrossHair.png using Guid(1d21b9719803e514a98e47859e6f6b23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f2647a1f3e5ddc2f47450dc18321f69') in 0.014768 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.114830 seconds.
+  path: Assets/Packages/DroneExplorer/Prefab/Materials/Tracer.mat
+  artifactKey: Guid(2922dd24336be6e4c876a0becd7b8b4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/Prefab/Materials/Tracer.mat using Guid(2922dd24336be6e4c876a0becd7b8b4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '128b35344db6563b520fb54176b5fec6') in 0.065692 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.894611 seconds.
+  path: Assets/Packages/DroneExplorer/Prefab/Bulets
+  artifactKey: Guid(203f2579fadcce34299d8391280d724e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/Prefab/Bulets using Guid(203f2579fadcce34299d8391280d724e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '351df1b10d5fd6af17b059646a962674') in 0.007608 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.164743 seconds.
+  path: Assets/Packages/DroneExplorer/Prefab/Bulets/Bullet.prefab
+  artifactKey: Guid(65176f5c967624842b9d25c9c895c7e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/Prefab/Bulets/Bullet.prefab using Guid(65176f5c967624842b9d25c9c895c7e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd3c9d1e1a90693de8e75e4428cdb199') in 0.018056 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Packages/DroneExplorer/Prefab/Bulets/PopupTarget2.prefab
+  artifactKey: Guid(cd47a8a228abf564f83ff5a75c8923e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/Prefab/Bulets/PopupTarget2.prefab using Guid(cd47a8a228abf564f83ff5a75c8923e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec06f46a5a9bac112ac900eef1724226') in 0.013222 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.582670 seconds.
+  path: Assets/Packages/DroneExplorer/Prefab/Gates/GatePopTarget.prefab
+  artifactKey: Guid(359d8fff55f612941819dacf34cfae49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/Prefab/Gates/GatePopTarget.prefab using Guid(359d8fff55f612941819dacf34cfae49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f57f9c16050fb51a2ec88a050c13775') in 0.013588 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Packages/DroneExplorer/Prefab/Gates/GateRingMedium.prefab
+  artifactKey: Guid(f9ecdeae6fc82c046ad5158dfb5a2a3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/Prefab/Gates/GateRingMedium.prefab using Guid(f9ecdeae6fc82c046ad5158dfb5a2a3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e633048b15399ae22f66cf26ab6bc2d') in 0.012028 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Packages/DroneExplorer/Prefab/Gates/GateSquareBig.prefab
+  artifactKey: Guid(74abbe6c40312944bac99634b51c4304) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/Prefab/Gates/GateSquareBig.prefab using Guid(74abbe6c40312944bac99634b51c4304) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e2826b0ed26bab4132a3e8a6d81d396e') in 0.012735 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Packages/DroneExplorer/Prefab/Gates/GateSquareSmall.prefab
+  artifactKey: Guid(d906be4107893ea46aeb1a448a7947aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/Prefab/Gates/GateSquareSmall.prefab using Guid(d906be4107893ea46aeb1a448a7947aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77ea76629bee8e92af91bf1bb99856f0') in 0.012215 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.784010 seconds.
+  path: Assets/Packages/DroneExplorer/Prefab/Mesh/Drone.fbx
+  artifactKey: Guid(42bf58e8c0bba8d4dbd86c9b8769086e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/Prefab/Mesh/Drone.fbx using Guid(42bf58e8c0bba8d4dbd86c9b8769086e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '18a3554d972a2e57788145bef9da624f') in 0.087509 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.337461 seconds.
+  path: Assets/Packages/DroneExplorer/Scripts/Drone
+  artifactKey: Guid(4af649a8b2118de4aa9879455d790f91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Packages/DroneExplorer/Scripts/Drone using Guid(4af649a8b2118de4aa9879455d790f91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96af297e99a276251c5b92d6a2326de0') in 0.004045 seconds 

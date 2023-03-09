@@ -20,7 +20,7 @@
 [Aa]ssets/Plugins/Editor/JetBrains*
 
 # Visual Studio cache directory
-.vs/
+*/.vs/
 
 # Gradle cache directory
 .gradle/
@@ -49,7 +49,7 @@ ExportedObj/
 *.mdb.meta
 
 # Unity3D generated file on crash reports
-sysinfo.txt
+*/sysinfo.txt
 
 # Builds
 *.apk
