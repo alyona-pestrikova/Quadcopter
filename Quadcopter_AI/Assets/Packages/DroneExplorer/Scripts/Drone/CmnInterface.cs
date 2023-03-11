@@ -4,17 +4,6 @@ using UnityEngine;
 
 namespace DroneExplorer
 {
-    /// <summary>
-    /// Project: 
-    /// This project enables the exploration of 3D space by way of a quad-copter drone. The intent 
-    /// is to provide a quick drop in package to allow a user to explore a scene in the Unity Play 
-    /// engine. The code is written to be modular and can incorporate other gameplay elements with 
-    /// the addition of more scripts.
-    /// 
-    /// Author: Wilson Sauders 
-    /// Email: HamsterUnity@gmail.com
-    /// Date:   03 / 14 / 2022 (Happy Pie day)
-    /// 
     /// File:
     /// I am the common interface class. I am the middle ground between an input 
     /// class like Player Input or an AI controller and physics objects. I contain 
