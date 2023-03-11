@@ -190,7 +190,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: DroneContainer
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6487750546805763338, guid: b9444221688dbe34cb709f3a419afd7c,
+        type: 3}
+      propertyPath: camObj
+      value: 
+      objectReference: {fileID: 963194225}
+    m_RemovedComponents:
+    - {fileID: 502314811769165934, guid: b9444221688dbe34cb709f3a419afd7c, type: 3}
+    - {fileID: 502314811655912626, guid: b9444221688dbe34cb709f3a419afd7c, type: 3}
+    - {fileID: 502314810833454026, guid: b9444221688dbe34cb709f3a419afd7c, type: 3}
+    - {fileID: 502314810659938209, guid: b9444221688dbe34cb709f3a419afd7c, type: 3}
+    - {fileID: 502314811927194076, guid: b9444221688dbe34cb709f3a419afd7c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b9444221688dbe34cb709f3a419afd7c, type: 3}
 --- !u!1 &705507993
 GameObject:
@@ -461,7 +471,7 @@ Transform:
   m_GameObject: {fileID: 1479635918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 0.001, z: 20}
+  m_LocalScale: {x: 200, y: 0.001, z: 200}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
