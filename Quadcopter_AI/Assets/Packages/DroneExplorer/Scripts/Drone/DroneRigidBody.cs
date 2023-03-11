@@ -134,8 +134,8 @@ namespace DroneExplorer
             float upThrust = 0;
 
             // apply interface input
-            if (myInterface.isPress[2]) upThrust -= 1;
-            if (myInterface.isPress[3]) upThrust += 1;
+            if (myInterface.isPress[0]) upThrust -= 1;
+            if (myInterface.isPress[1]) upThrust += 1;
 
             upThrust += myInterface.thrust;
 

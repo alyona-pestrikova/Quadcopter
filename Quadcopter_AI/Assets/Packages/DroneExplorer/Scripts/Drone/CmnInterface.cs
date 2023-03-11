@@ -22,7 +22,7 @@ namespace DroneExplorer
         public bool[] isPress;  // output flag true when button is initially pressed
         public bool[] isDown;   // output flag true when button is held down
 
-        public Texture2D[] iconButtons;
+        //public Texture2D[] iconButtons;
 
         // Start is called before the first frame update
         void Start()
