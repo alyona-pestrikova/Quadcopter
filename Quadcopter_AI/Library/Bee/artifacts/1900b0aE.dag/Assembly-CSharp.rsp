@@ -362,6 +362,7 @@
 "Assets/Packages/DroneExplorer/Scripts/Drone/Arrow.cs"
 "Assets/Packages/DroneExplorer/Scripts/Drone/Interface.cs"
 "Assets/Packages/DroneExplorer/Scripts/Drone/MoveDrone.cs"
+"Assets/Packages/DroneExplorer/Scripts/Drone/SliderController.cs"
 "Assets/Packages/DroneExplorer/Scripts/Drone/Spinner.cs"
 "Assets/Packages/DroneExplorer/Scripts/Wind/Subject.cs"
 "Assets/Packages/DroneExplorer/Scripts/Wind/WindArea.cs"

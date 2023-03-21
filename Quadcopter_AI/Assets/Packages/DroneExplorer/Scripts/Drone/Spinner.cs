@@ -5,11 +5,12 @@ using UnityEngine;
 public class Spinner : MonoBehaviour
 {
     // Start is called before the first frame update
-    private float _speed; // Spinner speed
+    public float _speed; // Spinner speed
+
     private Vector3 _local_axis; // Make rotate axis
     
     // Default values
-    public Spinner()
+    public void Start()
     {
         this._speed = 0;
         this._local_axis = new Vector3(0, 0, -1);
