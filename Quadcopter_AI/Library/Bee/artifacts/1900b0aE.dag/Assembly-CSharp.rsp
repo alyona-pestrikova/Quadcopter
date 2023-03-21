@@ -359,6 +359,7 @@
 "Assets/Joystick Pack/Scripts/Joysticks/FixedJoystick.cs"
 "Assets/Joystick Pack/Scripts/Joysticks/FloatingJoystick.cs"
 "Assets/Joystick Pack/Scripts/Joysticks/VariableJoystick.cs"
+"Assets/Packages/DroneExplorer/Scripts/Drone/Arrow.cs"
 "Assets/Packages/DroneExplorer/Scripts/Drone/Interface.cs"
 "Assets/Packages/DroneExplorer/Scripts/Drone/MoveDrone.cs"
 "Assets/Packages/DroneExplorer/Scripts/Drone/Spinner.cs"
