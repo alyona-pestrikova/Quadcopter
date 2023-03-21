@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/SampleScene.unity
+- path: Assets/Supercyan Free Forest Sample/Scenes/BrightDay.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
