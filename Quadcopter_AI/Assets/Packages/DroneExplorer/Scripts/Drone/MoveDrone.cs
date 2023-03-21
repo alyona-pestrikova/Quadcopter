@@ -17,7 +17,7 @@ public class MoveDrone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this._max_spinner_speed = 10000;
+        this._max_spinner_speed = 3000;
     }
 
     // Update is called once per frame
@@ -26,27 +26,44 @@ public class MoveDrone : MonoBehaviour
         
     }
 
-
+    // Update is called once per sometime
     void FixedUpdate()
     {
-        this.SpinnerSpeedUpdate();
+
 
     }
 
-    //Checks speed change
-    void SpinnerSpeedUpdate()
+
+
+
+
+    //Calc result power direction
+    private Vector3 CaclResultDirection()
+    {
+        return new Vector3(0,0,0);
+    }
+
+
+
+    
+    private void OnEnable()
+    {
+        this._interface._onSpeedChanged += SpinnerSpeedUpdate; //Add subscribe to event
+    }
+
+    
+    private void OnDisable()
+    {
+        this._interface._onSpeedChanged -= SpinnerSpeedUpdate; //Delete subscribe to event
+    }
+
+
+    //Change spinner speed
+    private void SpinnerSpeedUpdate()
     {
         this._spinners[0]._speed = this._interface._ul_spinner_speed_factor * this._max_spinner_speed;
         this._spinners[1]._speed = this._interface._dr_spinner_speed_factor * this._max_spinner_speed;
         this._spinners[2]._speed = this._interface._dl_spinner_speed_factor * this._max_spinner_speed;
         this._spinners[3]._speed = this._interface._ur_spinner_speed_factor * this._max_spinner_speed;
     }
-
-    //Calc result power direction
-    Vector3 CaclResultDirection()
-    {
-        return new Vector3(0,0,0);
-    }
-
-
 }

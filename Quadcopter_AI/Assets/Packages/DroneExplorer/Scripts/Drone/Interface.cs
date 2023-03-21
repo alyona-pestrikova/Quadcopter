@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Interface : MonoBehaviour
 {
@@ -10,15 +11,12 @@ public class Interface : MonoBehaviour
     public float _dl_spinner_speed_factor; // down left spinner speed factor [0;1]
     public float _dr_spinner_speed_factor; // down right spinner speed factor [0;1]
 
-    // Start is called before the first frame update
-    void Start()
+    public Action _onSpeedChanged; //action react when speed is changing
+
+    // Call by input interface
+    public void SpeedUpdate()
     {
-        
+        this._onSpeedChanged?.Invoke();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
