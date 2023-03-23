@@ -2380,7 +2380,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047810977}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2401,7 +2401,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aded9bfcee2113546a15e526c66676bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _axis: {x: 0, y: 0, z: 0}
+  _axis: {x: 9, y: 0, z: 9}
+  _cylinder: {fileID: 1621399031}
+  _drone_rb: {fileID: 429902357}
 --- !u!1 &1076728592
 GameObject:
   m_ObjectHideFlags: 0
@@ -3098,8 +3100,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621399031}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2188, z: 0}
-  m_LocalScale: {x: 0.007073252, y: 0.1790673, z: 0.0060251486}
+  m_LocalPosition: {x: 0, y: 0.178, z: -0}
+  m_LocalScale: {x: 0.007073252, y: 0.13, z: 0.0060251486}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1047810978}
@@ -3114,7 +3116,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1621399031}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
@@ -3139,7 +3141,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 59e4faf24927edf4a82f463ad16f1c37, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

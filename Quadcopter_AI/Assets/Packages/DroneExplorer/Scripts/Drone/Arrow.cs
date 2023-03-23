@@ -4,10 +4,18 @@ public class Arrow : MonoBehaviour
 {
 
     public Vector3 _axis; // show direction of drone movement
+    public GameObject _cylinder; //Cylinder object for scaling length of the arrow
+    public GameObject _drone_rb; //Drone rigid body object for changing the arrow's position
 
-    // Update is called once per frame
+    void Start()
+    {
+        transform.position = _drone_rb.transform.position;
+    }
+    
     void Update()
     {
-        transform.Translate(_axis);
+        transform.rotation = Quaternion.FromToRotation(Vector3.up, _axis);
+        _cylinder.transform.localScale = new Vector3(0.007f, 0.1f + _axis.magnitude / 1000, 0.006f);
+        transform.position = _drone_rb.transform.position;
     }
 }
