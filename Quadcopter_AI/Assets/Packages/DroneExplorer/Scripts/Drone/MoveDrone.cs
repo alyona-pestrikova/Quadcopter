@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MoveDrone : MonoBehaviour
 {
-    private Rigidbody _d_body; // link to "DroneRigidBody" obj
+    public Rigidbody _d_body; // link to "DroneRigidBody" obj
 
     public Spinner[] _spinners; // spinner objs
 
@@ -11,6 +11,8 @@ public class MoveDrone : MonoBehaviour
     public Arrow _arrow; // show direction of drone movement
 
     public float _max_spinner_speed; // max spinner speed
+
+    private Vector3 _result_vector_;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +29,7 @@ public class MoveDrone : MonoBehaviour
     // Update is called once per sometime
     void FixedUpdate()
     {
-
+       
 
     }
 

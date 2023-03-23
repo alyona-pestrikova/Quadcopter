@@ -14,7 +14,7 @@ public class Spinner : MonoBehaviour
     // Default values
     void Start()
     {
-        this._acceleration = 500;
+        this._acceleration = 1000;
         this._speed = 0;
         this._next_speed = 0;
         this._local_axis = new Vector3(0, 0, 1);
