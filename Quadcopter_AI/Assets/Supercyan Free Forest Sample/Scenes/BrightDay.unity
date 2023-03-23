@@ -2265,23 +2265,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1009514003}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1009514008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 429902357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e78269bdbc6c62c46bd2d9d99b69727d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ul_slider: {fileID: 0}
-  _ur_slider: {fileID: 0}
-  _dl_slider: {fileID: 0}
-  _dr_slider: {fileID: 0}
-  _interface: {fileID: 0}
 --- !u!1 &1043708899
 GameObject:
   m_ObjectHideFlags: 0
@@ -2366,8 +2349,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 1233861272}
   m_HandleRect: {fileID: 900382328}
   m_Direction: 2
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -0.5
+  m_MaxValue: 0.5
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -2616,8 +2599,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 993519095}
   m_HandleRect: {fileID: 675495628}
   m_Direction: 2
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -0.5
+  m_MaxValue: 0.5
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -3642,8 +3625,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 1430423233}
   m_HandleRect: {fileID: 882330877}
   m_Direction: 2
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -0.5
+  m_MaxValue: 0.5
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -3733,8 +3716,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 1459795298}
   m_HandleRect: {fileID: 1076728593}
   m_Direction: 2
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -0.5
+  m_MaxValue: 0.5
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:

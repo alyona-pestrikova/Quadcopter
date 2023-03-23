@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveDrone : MonoBehaviour
@@ -17,7 +15,7 @@ public class MoveDrone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this._max_spinner_speed = 3000;
+        this._max_spinner_speed = 10000;
     }
 
     // Update is called once per frame
@@ -61,9 +59,9 @@ public class MoveDrone : MonoBehaviour
     //Change spinner speed
     private void SpinnerSpeedUpdate()
     {
-        this._spinners[0]._speed = this._interface._ul_spinner_speed_factor * this._max_spinner_speed;
-        this._spinners[1]._speed = this._interface._dr_spinner_speed_factor * this._max_spinner_speed;
-        this._spinners[2]._speed = this._interface._dl_spinner_speed_factor * this._max_spinner_speed;
-        this._spinners[3]._speed = this._interface._ur_spinner_speed_factor * this._max_spinner_speed;
+        this._spinners[0]._next_speed = this._interface._ul_spinner_speed_factor * this._max_spinner_speed;
+        this._spinners[1]._next_speed = this._interface._dr_spinner_speed_factor * this._max_spinner_speed;
+        this._spinners[2]._next_speed = this._interface._dl_spinner_speed_factor * this._max_spinner_speed;
+        this._spinners[3]._next_speed = this._interface._ur_spinner_speed_factor * this._max_spinner_speed;
     }
 }
