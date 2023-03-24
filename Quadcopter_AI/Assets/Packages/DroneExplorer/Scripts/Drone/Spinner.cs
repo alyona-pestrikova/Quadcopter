@@ -5,16 +5,24 @@ using System.Collections;
 public class Spinner : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float _speed; // Spinner speed
-    public float _acceleration; // Spinner acceleration
-    public float _next_speed; // This speed is changed by input
+    public float _speed; // spinner speed
+    public float _acceleration; // spinner acceleration
+    public float _next_speed; // this speed is changed by input
 
-    private Vector3 _local_axis; // Make rotate axis
+    public enum Traction
+    {
+        Direct = 1,
+        Inverse = -1
+    };
+
+    public Traction _traction; // spinner traction direction
+
+    private Vector3 _local_axis; // make rotate axis
     
     // Default values
     void Start()
     {
-        this._acceleration = 1000;
+        this._acceleration = 500;
         this._speed = 0;
         this._next_speed = 0;
         this._local_axis = new Vector3(0, 0, 1);

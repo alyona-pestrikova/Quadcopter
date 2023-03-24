@@ -1,1 +1,1 @@
-C:\Users\Алёна\Documents\Quadcopter\Quadcopter\Quadcopter_AI
+A:\Develop\Unity\1\Quadcopter\Quadcopter_AI

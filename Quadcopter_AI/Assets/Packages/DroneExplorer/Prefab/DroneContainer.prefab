@@ -179,6 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8fdc9964ba7f94e881086a8b4ef17c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 0
+  _acceleration: 0
+  _next_speed: 0
 --- !u!1 &1354081076748774298
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,6 +278,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8fdc9964ba7f94e881086a8b4ef17c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 0
+  _acceleration: 0
+  _next_speed: 0
 --- !u!1 &3335079727390804271
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,6 +460,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8fdc9964ba7f94e881086a8b4ef17c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 0
+  _acceleration: 0
+  _next_speed: 0
 --- !u!1 &6487750546323335962
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,7 +558,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 377ce0fa2e8e4834e81e64daa0bbddd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _d_body: {fileID: 0}
   _spinners: []
+  _interface: {fileID: 0}
+  _arrow: {fileID: 0}
+  _max_spinner_speed: 0
 --- !u!1 &6487750546672472116
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,7 +609,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6487750546674207888
 Transform:
   m_ObjectHideFlags: 0
@@ -608,8 +621,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6487750547769135538}
+  m_Children: []
   m_Father: {fileID: 6487750546712198203}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -659,6 +671,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7f7740768d45a34c9fb7bc024162363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ul_spinner_speed_factor: 0
+  _ur_spinner_speed_factor: 0
+  _dl_spinner_speed_factor: 0
+  _dr_spinner_speed_factor: 0
 --- !u!1 &6487750546961712905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,37 +1063,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &6487750547769135539
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6487750547769135538}
-  m_Layer: 0
-  m_Name: PlayerMouseLook
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6487750547769135538
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6487750547769135539}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6487750546674207888}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6487750548048697808
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,6 +1293,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8fdc9964ba7f94e881086a8b4ef17c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed: 0
+  _acceleration: 0
+  _next_speed: 0
 --- !u!1 &8527710025919684119
 GameObject:
   m_ObjectHideFlags: 0
