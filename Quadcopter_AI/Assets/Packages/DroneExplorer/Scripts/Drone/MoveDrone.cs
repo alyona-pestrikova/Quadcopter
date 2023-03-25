@@ -10,14 +10,18 @@ public class MoveDrone : MonoBehaviour
 
     public Arrow _arrow; // shows direction of drone movement
 
-    public float _max_spinner_speed; // max spinner speed
+    public float _max_spinner_speed;
 
-
+    // These amendments need to correct drone physics
+    private float _force_amendment;
+    private float _torque_amendment;
 
     // Start is called before the first frame update
     void Start()
     {
         this._max_spinner_speed = 5000;
+        this._force_amendment = 0.5f;
+        this._torque_amendment = 0.005f;
 
         // Set spinner traction direction
         this._spinners[0]._traction = Spinner.Traction.Direct;
@@ -37,8 +41,10 @@ public class MoveDrone : MonoBehaviour
         // Adds force from the side of every spinner
         foreach (var spinner in this._spinners)
         {
-            this._d_body.AddForceAtPosition(0.5f * transform.up * spinner._speed * 
+            this._d_body.AddForceAtPosition(this._force_amendment * transform.up * spinner._speed * 
             Time.fixedDeltaTime * (float)spinner._traction, spinner.transform.position); // adds force from the side of every spinner
+
+            this._d_body.AddTorque(transform.up * spinner._speed * this._torque_amendment); // adds torque from every spinner
         }
 
 
