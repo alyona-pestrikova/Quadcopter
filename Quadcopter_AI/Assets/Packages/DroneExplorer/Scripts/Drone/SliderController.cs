@@ -12,8 +12,8 @@ public class SliderController : MonoBehaviour
 
     public Interface _interface; // input interface
 
-    //Add listeners on Value field at slider
-    //Speed factor change when value change
+    //Adds listeners on Value field at slider
+    //Speed factor changes when value change
     void Start()
     {
         this._ul_slider.onValueChanged.AddListener((value) => {

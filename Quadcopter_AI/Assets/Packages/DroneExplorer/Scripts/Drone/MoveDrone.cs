@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class MoveDrone : MonoBehaviour
 {
-    public Rigidbody _d_body; // link to "DroneRigidBody" obj
+    public Rigidbody _d_body; // links to "DroneRigidBody" obj
 
     public Spinner[] _spinners; // spinner objs
 
-    public Interface _interface; // link drone with input
+    public Interface _interface; // links drone with input
 
-    public Arrow _arrow; // show direction of drone movement
+    public Arrow _arrow; // shows direction of drone movement
 
     public float _max_spinner_speed; // max spinner speed
 
@@ -32,13 +32,14 @@ public class MoveDrone : MonoBehaviour
     // Update is called once per sometime
     void FixedUpdate()
     {
+        this._arrow._axis = this._d_body.velocity; // updates drone arrow direction
+
         // Adds force from the side of every spinner
         foreach (var spinner in this._spinners)
         {
-            this._d_body.AddForceAtPosition(0.5f * transform.up * spinner._speed * Time.fixedDeltaTime * (float)spinner._traction, spinner.transform.position);
+            this._d_body.AddForceAtPosition(0.5f * transform.up * spinner._speed * 
+            Time.fixedDeltaTime * (float)spinner._traction, spinner.transform.position); // adds force from the side of every spinner
         }
-
-
 
 
     }
@@ -49,13 +50,13 @@ public class MoveDrone : MonoBehaviour
     
     private void OnEnable()
     {
-        this._interface._onSpeedChanged += SpinnerSpeedUpdate; //Add subscribe to change speed event
+        this._interface._onSpeedChanged += SpinnerSpeedUpdate; //Adds subscribe to change speed event
     }
 
     
     private void OnDisable()
     {
-        this._interface._onSpeedChanged -= SpinnerSpeedUpdate; //Delete subscribe to change speed event
+        this._interface._onSpeedChanged -= SpinnerSpeedUpdate; //Deletes subscribe to change speed event
     }
 
 

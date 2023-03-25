@@ -3,7 +3,7 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
 
-    public Vector3 _axis; // show direction of drone movement
+    public Vector3 _axis; // shows direction of drone movement
     public GameObject _cylinder; // cylinder object for scaling length of the arrow
     public GameObject _drone_rb; // drone rigid body object for changing the arrow's position
 

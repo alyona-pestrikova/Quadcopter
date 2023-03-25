@@ -17,7 +17,7 @@ public class Spinner : MonoBehaviour
 
     public Traction _traction; // spinner traction direction
 
-    private Vector3 _local_axis; // make rotate axis
+    private Vector3 _local_axis; // makes rotate axis
     
     // Default values
     void Start()
