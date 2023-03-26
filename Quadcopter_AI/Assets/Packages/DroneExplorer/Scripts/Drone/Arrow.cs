@@ -15,7 +15,7 @@ public class Arrow : MonoBehaviour
     void Update()
     {
         transform.rotation = Quaternion.FromToRotation(Vector3.up, _axis);
-        _cylinder.transform.localScale = new Vector3(0.007f, 0.1f + _axis.magnitude / 1000, 0.006f);
-        transform.position = _drone_rb.transform.position;
+        _cylinder.transform.localScale = new Vector3(0.007f, 0.01f + _axis.magnitude / 20, 0.006f);
+        transform.position = _drone_rb.transform.position + new Vector3(0, _cylinder.transform.localScale.y / 2, 0);
     }
 }

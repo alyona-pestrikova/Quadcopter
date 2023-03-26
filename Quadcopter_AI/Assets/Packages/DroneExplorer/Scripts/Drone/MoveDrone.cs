@@ -1,3 +1,5 @@
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class MoveDrone : MonoBehaviour
@@ -14,14 +16,20 @@ public class MoveDrone : MonoBehaviour
 
     // These amendments need to correct drone physics
     private float _force_amendment;
-    private float _torque_amendment;
+
+    // Parameters for torque counting
+    private float _spinner_radius = 0.03f; 
+    private float _air_density = 1.2f;
+    private float _torque_const = 0.0025f;   //Constant fron torque formula
+    private float _reference_area = 0.007f * 0.055f;
+    private float _torque_value;  //Torque from formula without speed
 
     // Start is called before the first frame update
     void Start()
     {
         this._max_spinner_speed = 5000;
-        this._force_amendment = 0.5f;
-        this._torque_amendment = 0.005f;
+        this._force_amendment = 0.8f;
+        _torque_value = 0.5f * _spinner_radius * _air_density * _torque_const * _reference_area;
 
         // Set spinner traction direction
         this._spinners[0]._traction = Spinner.Traction.Direct;
@@ -43,17 +51,14 @@ public class MoveDrone : MonoBehaviour
         {
             this._d_body.AddForceAtPosition(this._force_amendment * transform.up * spinner._speed * 
             Time.fixedDeltaTime * (float)spinner._traction, spinner.transform.position); // adds force from the side of every spinner
-
-            this._d_body.AddTorque(transform.up * spinner._speed * this._torque_amendment); // adds torque from every spinner
+            
+            this._d_body.AddTorque(transform.up * _torque_value * spinner._speed * spinner._speed);
         }
 
 
     }
 
 
-
-
-    
     private void OnEnable()
     {
         this._interface._onSpeedChanged += SpinnerSpeedUpdate; //Adds subscribe to change speed event
