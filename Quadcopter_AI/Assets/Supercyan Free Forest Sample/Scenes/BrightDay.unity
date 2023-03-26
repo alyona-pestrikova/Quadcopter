@@ -2378,6 +2378,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 557891540c339d84aa1f41ff287a1527, type: 2}
+    - target: {fileID: 6356347289948857659, guid: b9444221688dbe34cb709f3a419afd7c,
+        type: 3}
+      propertyPath: _slider_controller
+      value: 
+      objectReference: {fileID: 1810258585}
     - target: {fileID: 6487750546323335961, guid: b9444221688dbe34cb709f3a419afd7c,
         type: 3}
       propertyPath: m_RootOrder

@@ -182,6 +182,7 @@ MonoBehaviour:
   _speed: 0
   _acceleration: 0
   _next_speed: 0
+  _traction: 0
 --- !u!1 &1354081076748774298
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,6 +282,7 @@ MonoBehaviour:
   _speed: 0
   _acceleration: 0
   _next_speed: 0
+  _traction: 0
 --- !u!1 &3335079727390804271
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,6 +465,7 @@ MonoBehaviour:
   _speed: 0
   _acceleration: 0
   _next_speed: 0
+  _traction: 0
 --- !u!1 &6487750546323335962
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,6 +563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _d_body: {fileID: 0}
   _spinners: []
+  _rays: []
   _interface: {fileID: 0}
   _arrow: {fileID: 0}
   _max_spinner_speed: 0
@@ -603,6 +607,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6487750546674207888}
+  - component: {fileID: 6356347289948857659}
   m_Layer: 0
   m_Name: PlayerMouseKeyboard
   m_TagString: Untagged
@@ -625,6 +630,18 @@ Transform:
   m_Father: {fileID: 6487750546712198203}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6356347289948857659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6487750546674207889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdfcbb60a03460f4086114c0c738eed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6487750546712198212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,6 +1313,7 @@ MonoBehaviour:
   _speed: 0
   _acceleration: 0
   _next_speed: 0
+  _traction: 0
 --- !u!1 &8527710025919684119
 GameObject:
   m_ObjectHideFlags: 0
