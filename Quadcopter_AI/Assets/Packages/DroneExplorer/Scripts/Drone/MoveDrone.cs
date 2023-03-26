@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using System;
 
 public class MoveDrone : MonoBehaviour
 {
@@ -16,22 +17,25 @@ public class MoveDrone : MonoBehaviour
 
     public float _max_spinner_speed;
 
+
+
     // These amendments need to correct drone physics
-    private float _force_amendment;
+    private float _full_force_amendment;
+    public float _force_amendment;
 
     // Parameters for torque counting
     private float _spinner_radius = 0.03f; 
     private float _air_density = 1.2f;
-    private float _torque_const = 0.0025f;   //Constant fron torque formula
+    private float _torque_const = 0.0025f;   // constant fron torque formula
     private float _reference_area = 0.007f * 0.055f;
-    private float _torque_value;  //Torque from formula without speed
+    private float _torque_amendment;  // torque from formula without speed
 
     // Start is called before the first frame update
     void Start()
     {
         this._max_spinner_speed = 5000;
-        this._force_amendment = 0.8f;
-        _torque_value = 0.5f * _spinner_radius * _air_density * _torque_const * _reference_area;
+        this._full_force_amendment = 0.3f;
+        this._torque_amendment = 0.5f * _spinner_radius * _air_density * _torque_const * _reference_area;
 
         // Set spinner traction direction
         this._spinners[0]._traction = Spinner.Traction.Direct;
@@ -48,15 +52,19 @@ public class MoveDrone : MonoBehaviour
     {
         this._arrow._axis = this._d_body.velocity; // updates drone arrow direction
 
-        // Adds force from the side of every spinner
+        // Calculates hight amendment
+        //this._d_body.drag -= transform.position.y;
+        float hight_amendment = (float)transform.position.y / 10; // hight amendment correction
+        this._force_amendment = this._full_force_amendment / (hight_amendment < 1? 1: hight_amendment); // force correction about hight
+
+        // Adds force
         foreach (var spinner in this._spinners)
         {
-            this._d_body.AddForceAtPosition(this._force_amendment * transform.up * spinner._speed * 
-            Time.fixedDeltaTime * (float)spinner._traction, spinner.transform.position); // adds force from the side of every spinner
+            this._d_body.AddForceAtPosition(this._force_amendment * transform.up * Math.Abs(spinner._speed) * 
+            Time.fixedDeltaTime, spinner.transform.position); // adds force from the side of every spinner
             
-            this._d_body.AddTorque(transform.up * _torque_value * spinner._speed * spinner._speed);
+            this._d_body.AddTorque(transform.up * this._torque_amendment * spinner._speed * spinner._speed * (float)spinner._traction); // adds torque from every spinner
         }
-
 
     }
 

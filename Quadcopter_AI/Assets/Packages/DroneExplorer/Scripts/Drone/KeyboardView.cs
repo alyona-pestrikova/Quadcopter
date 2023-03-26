@@ -6,12 +6,12 @@ public class KeyboardView : MonoBehaviour
 {
     public SliderController _slider_controller;
 
-    private float _input_factor;
+    private float _input_amendment;
 
     // Start is called before the first frame update
     void Start()
     {
-        this._input_factor = 0.05f;
+        this._input_amendment = 0.08f;
     }
 
     // Update is called once per frame
@@ -29,37 +29,37 @@ public class KeyboardView : MonoBehaviour
         }
         if(Input.GetButton("AllSpinUp"))
         { 
-            this._slider_controller._dl_slider.value += Time.deltaTime * this._input_factor * negative;
-            this._slider_controller._ul_slider.value += Time.deltaTime * this._input_factor * negative;
-            this._slider_controller._dr_slider.value += Time.deltaTime * this._input_factor * negative;
-            this._slider_controller._ur_slider.value += Time.deltaTime * this._input_factor * negative;
+            this._slider_controller._dl_slider.value += Time.deltaTime * this._input_amendment * negative;
+            this._slider_controller._ul_slider.value += Time.deltaTime * this._input_amendment * negative;
+            this._slider_controller._dr_slider.value += Time.deltaTime * this._input_amendment * negative;
+            this._slider_controller._ur_slider.value += Time.deltaTime * this._input_amendment * negative;
         }
         else if(Input.GetButton("RotateLeft"))
         {
 
-            this._slider_controller._ul_slider.value += Time.deltaTime * this._input_factor * negative;
-            this._slider_controller._dr_slider.value += Time.deltaTime * this._input_factor * negative;
+            this._slider_controller._ul_slider.value += Time.deltaTime * this._input_amendment * negative;
+            this._slider_controller._dr_slider.value += Time.deltaTime * this._input_amendment * negative;
         }
         else if(Input.GetButton("RotateRight"))
         {
-            this._slider_controller._ur_slider.value += Time.deltaTime * this._input_factor * negative;
-            this._slider_controller._dl_slider.value += Time.deltaTime * this._input_factor * negative;
+            this._slider_controller._ur_slider.value += Time.deltaTime * this._input_amendment * negative;
+            this._slider_controller._dl_slider.value += Time.deltaTime * this._input_amendment * negative;
         }
         else if(Input.GetKey(KeyCode.Q))
         {
-            this._slider_controller._ul_slider.value += Time.deltaTime * this._input_factor * negative;
+            this._slider_controller._ul_slider.value += Time.deltaTime * this._input_amendment * negative;
         }
         else if(Input.GetKey(KeyCode.W))
         {
-            this._slider_controller._ur_slider.value += Time.deltaTime * this._input_factor * negative;
+            this._slider_controller._ur_slider.value += Time.deltaTime * this._input_amendment * negative;
         }
         else if(Input.GetKey(KeyCode.E))
         {
-            this._slider_controller._dl_slider.value += Time.deltaTime * this._input_factor * negative;
+            this._slider_controller._dl_slider.value += Time.deltaTime * this._input_amendment * negative;
         }
         else if(Input.GetKey(KeyCode.R))
         {
-            this._slider_controller._dr_slider.value += Time.deltaTime * this._input_factor * negative;
+            this._slider_controller._dr_slider.value += Time.deltaTime * this._input_amendment * negative;
         }
     }
 }
