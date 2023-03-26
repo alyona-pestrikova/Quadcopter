@@ -8,6 +8,8 @@ public class MoveDrone : MonoBehaviour
 
     public Spinner[] _spinners; // spinner objs
 
+    public DroneRay[] _rays; //Ray objs
+
     public Interface _interface; // links drone with input
 
     public Arrow _arrow; // shows direction of drone movement
