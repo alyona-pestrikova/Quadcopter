@@ -48,8 +48,8 @@ public class MoveDrone : MonoBehaviour
 
         // Set spinner traction direction
         this._spinners[0]._traction = Spinner.Traction.Direct;
-        this._spinners[1]._traction = Spinner.Traction.Direct;
-        this._spinners[2]._traction = Spinner.Traction.Inverse;
+        this._spinners[1]._traction = Spinner.Traction.Inverse;
+        this._spinners[2]._traction = Spinner.Traction.Direct;
         this._spinners[3]._traction = Spinner.Traction.Inverse;
     }
 
@@ -91,10 +91,10 @@ public class MoveDrone : MonoBehaviour
         this._immutable_telemetry.text += "Velocity: " + this._d_body.velocity.magnitude.ToString() + " m/s" + "\n";
 
         // Changeable telemetry
-        this._changeable_telemetry.text = "Left Up Spinner speed: " + this._spinners[0]._speed.ToString() + "\n";
-        this._changeable_telemetry.text += "Right Down Spinner speed: " + this._spinners[1]._speed.ToString() + "\n";
-        this._changeable_telemetry.text += "Left Down Spinner speed: " + (-this._spinners[2]._speed).ToString() + "\n";
-        this._changeable_telemetry.text += "Right Up Spinner speed: " + (-this._spinners[3]._speed).ToString() + "\n";
+        this._changeable_telemetry.text = "Left Up Spinner speed: " + (this._spinners[0]._speed * (float)this._spinners[0]._traction).ToString() + "\n";
+        this._changeable_telemetry.text += "Left Down Spinner speed: " + (this._spinners[1]._speed * (float)this._spinners[1]._traction).ToString() + "\n";
+        this._changeable_telemetry.text += "Right Down Spinner speed: " + (this._spinners[2]._speed * (float)this._spinners[2]._traction).ToString() + "\n";
+        this._changeable_telemetry.text += "Right Up Spinner speed: " + (this._spinners[3]._speed * (float)this._spinners[3]._traction).ToString() + "\n";
     }
 
 
@@ -121,9 +121,9 @@ public class MoveDrone : MonoBehaviour
     // Change spinner speed
     private void SpinnerSpeedUpdate()
     {
-        this._spinners[0]._next_speed = this._interface._ul_spinner_speed_factor * this._max_spinner_speed;
-        this._spinners[1]._next_speed = this._interface._dr_spinner_speed_factor * this._max_spinner_speed;
-        this._spinners[2]._next_speed = -this._interface._dl_spinner_speed_factor * this._max_spinner_speed;
-        this._spinners[3]._next_speed = -this._interface._ur_spinner_speed_factor * this._max_spinner_speed;
+        this._spinners[0]._next_speed = this._interface._ul_spinner_speed_factor * this._max_spinner_speed * (float)this._spinners[0]._traction;
+        this._spinners[1]._next_speed = this._interface._dl_spinner_speed_factor * this._max_spinner_speed * (float)this._spinners[1]._traction;
+        this._spinners[2]._next_speed = this._interface._dr_spinner_speed_factor * this._max_spinner_speed * (float)this._spinners[2]._traction;
+        this._spinners[3]._next_speed = this._interface._ur_spinner_speed_factor * this._max_spinner_speed * (float)this._spinners[3]._traction;
     }
 }

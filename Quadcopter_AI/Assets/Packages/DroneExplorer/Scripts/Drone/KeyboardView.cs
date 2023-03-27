@@ -36,17 +36,17 @@ public class KeyboardView : MonoBehaviour
         }
         if(Input.GetButton("Horizontal"))
         {
-            this._slider_controller._dr_slider.value -= Time.deltaTime * this._input_amendment * Input.GetAxis("Horizontal");
+            this._slider_controller._dl_slider.value -= Time.deltaTime * this._input_amendment * Input.GetAxis("Horizontal");
             this._slider_controller._dl_slider.value -= Time.deltaTime * this._input_amendment * Input.GetAxis("Horizontal");
             this._slider_controller._ur_slider.value += Time.deltaTime * this._input_amendment * Input.GetAxis("Horizontal");
-            this._slider_controller._ul_slider.value += Time.deltaTime * this._input_amendment * Input.GetAxis("Horizontal");
+            this._slider_controller._dr_slider.value += Time.deltaTime * this._input_amendment * Input.GetAxis("Horizontal");
         }
         if(Input.GetButton("Vertical"))
         {
-            this._slider_controller._dl_slider.value -= Time.deltaTime * this._input_amendment * Input.GetAxis("Vertical");
             this._slider_controller._ul_slider.value -= Time.deltaTime * this._input_amendment * Input.GetAxis("Vertical");
-            this._slider_controller._ur_slider.value += Time.deltaTime * this._input_amendment * Input.GetAxis("Vertical");
+            this._slider_controller._ur_slider.value -= Time.deltaTime * this._input_amendment * Input.GetAxis("Vertical");
             this._slider_controller._dr_slider.value += Time.deltaTime * this._input_amendment * Input.GetAxis("Vertical");
+            this._slider_controller._dl_slider.value += Time.deltaTime * this._input_amendment * Input.GetAxis("Vertical");
         }
         if(Input.GetButton("RotateLeft"))
         {

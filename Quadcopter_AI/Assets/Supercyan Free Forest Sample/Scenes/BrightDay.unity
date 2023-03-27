@@ -3487,6 +3487,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1354081076748774298, guid: b9444221688dbe34cb709f3a419afd7c,
+        type: 3}
+      propertyPath: m_Name
+      value: d-l-prop
+      objectReference: {fileID: 0}
     - target: {fileID: 2996380188318173707, guid: b9444221688dbe34cb709f3a419afd7c,
         type: 3}
       propertyPath: _arrow
@@ -3561,17 +3566,17 @@ PrefabInstance:
         type: 3}
       propertyPath: _spinners.Array.data[1]
       value: 
-      objectReference: {fileID: 66455414}
+      objectReference: {fileID: 2000519452}
     - target: {fileID: 2996380188318173707, guid: b9444221688dbe34cb709f3a419afd7c,
         type: 3}
       propertyPath: _spinners.Array.data[2]
       value: 
-      objectReference: {fileID: 382421242}
+      objectReference: {fileID: 66455414}
     - target: {fileID: 2996380188318173707, guid: b9444221688dbe34cb709f3a419afd7c,
         type: 3}
       propertyPath: _spinners.Array.data[3]
       value: 
-      objectReference: {fileID: 2000519452}
+      objectReference: {fileID: 382421242}
     - target: {fileID: 3156077850333698965, guid: b9444221688dbe34cb709f3a419afd7c,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -3826,6 +3831,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552756259195343385, guid: b9444221688dbe34cb709f3a419afd7c,
+        type: 3}
+      propertyPath: m_Name
+      value: u-r-prop
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6487750546373279719, guid: b9444221688dbe34cb709f3a419afd7c, type: 3}
@@ -5495,9 +5505,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ul_slider: {fileID: 1043708901}
-  _ur_slider: {fileID: 1152505383}
+  _ur_slider: {fileID: 1956598436}
   _dl_slider: {fileID: 1987860209}
-  _dr_slider: {fileID: 1956598436}
+  _dr_slider: {fileID: 1152505383}
   _interface: {fileID: 1257411679}
 --- !u!1 &1824084227
 GameObject:
@@ -5553,7 +5563,7 @@ GameObject:
   - component: {fileID: 1956598435}
   - component: {fileID: 1956598436}
   m_Layer: 5
-  m_Name: d-r-sl
+  m_Name: d-l-sl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5644,7 +5654,7 @@ GameObject:
   - component: {fileID: 1987860208}
   - component: {fileID: 1987860209}
   m_Layer: 5
-  m_Name: d-l-sl
+  m_Name: d-r-sl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
