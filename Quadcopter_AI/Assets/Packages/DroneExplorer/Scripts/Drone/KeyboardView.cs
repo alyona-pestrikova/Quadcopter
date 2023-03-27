@@ -34,52 +34,30 @@ public class KeyboardView : MonoBehaviour
             this._slider_controller._dr_slider.value += Time.deltaTime * this._input_amendment * negative;
             this._slider_controller._ur_slider.value += Time.deltaTime * this._input_amendment * negative;
         }
-        else if(Input.GetKey(KeyCode.UpArrow))
+        if(Input.GetButton("Horizontal"))
         {
-            this._slider_controller._dl_slider.value += Time.deltaTime * this._input_amendment * negative;
-            this._slider_controller._ul_slider.value += Time.deltaTime * this._input_amendment * negative;
+            this._slider_controller._dr_slider.value -= Time.deltaTime * this._input_amendment * Input.GetAxis("Horizontal");
+            this._slider_controller._dl_slider.value -= Time.deltaTime * this._input_amendment * Input.GetAxis("Horizontal");
+            this._slider_controller._ur_slider.value += Time.deltaTime * this._input_amendment * Input.GetAxis("Horizontal");
+            this._slider_controller._ul_slider.value += Time.deltaTime * this._input_amendment * Input.GetAxis("Horizontal");
         }
-        else if(Input.GetKey(KeyCode.DownArrow))
+        if(Input.GetButton("Vertical"))
         {
-            this._slider_controller._dr_slider.value += Time.deltaTime * this._input_amendment * negative;
-            this._slider_controller._ur_slider.value += Time.deltaTime * this._input_amendment * negative;
+            this._slider_controller._dl_slider.value -= Time.deltaTime * this._input_amendment * Input.GetAxis("Vertical");
+            this._slider_controller._ul_slider.value -= Time.deltaTime * this._input_amendment * Input.GetAxis("Vertical");
+            this._slider_controller._ur_slider.value += Time.deltaTime * this._input_amendment * Input.GetAxis("Vertical");
+            this._slider_controller._dr_slider.value += Time.deltaTime * this._input_amendment * Input.GetAxis("Vertical");
         }
-        else if(Input.GetKey(KeyCode.LeftArrow))
-        {
-            this._slider_controller._ul_slider.value += Time.deltaTime * this._input_amendment * negative;
-            this._slider_controller._ur_slider.value += Time.deltaTime * this._input_amendment * negative;
-        }
-        else if(Input.GetKey(KeyCode.RightArrow))
-        {
-            this._slider_controller._dr_slider.value += Time.deltaTime * this._input_amendment * negative;
-            this._slider_controller._dl_slider.value += Time.deltaTime * this._input_amendment * negative;
-        }
-        else if(Input.GetButton("RotateLeft"))
+        if(Input.GetButton("RotateLeft"))
         {
 
             this._slider_controller._ul_slider.value += Time.deltaTime * this._input_amendment * negative;
             this._slider_controller._dr_slider.value += Time.deltaTime * this._input_amendment * negative;
         }
-        else if(Input.GetButton("RotateRight"))
+        if(Input.GetButton("RotateRight"))
         {
             this._slider_controller._ur_slider.value += Time.deltaTime * this._input_amendment * negative;
             this._slider_controller._dl_slider.value += Time.deltaTime * this._input_amendment * negative;
-        }
-        else if(Input.GetKey(KeyCode.Q))
-        {
-            this._slider_controller._ul_slider.value += Time.deltaTime * this._input_amendment * negative;
-        }
-        else if(Input.GetKey(KeyCode.W))
-        {
-            this._slider_controller._ur_slider.value += Time.deltaTime * this._input_amendment * negative;
-        }
-        else if(Input.GetKey(KeyCode.E))
-        {
-            this._slider_controller._dl_slider.value += Time.deltaTime * this._input_amendment * negative;
-        }
-        else if(Input.GetKey(KeyCode.R))
-        {
-            this._slider_controller._dr_slider.value += Time.deltaTime * this._input_amendment * negative;
         }
     }
 }

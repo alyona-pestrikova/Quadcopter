@@ -18,5 +18,7 @@ public class MoveCam : MonoBehaviour
     void Update()
     {
         transform.position = this._target.position + this._dist;
+        transform.rotation = this._target.rotation;
+        transform.LookAt(this._target.position);
     }
 }
