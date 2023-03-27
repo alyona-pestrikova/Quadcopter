@@ -34,6 +34,26 @@ public class KeyboardView : MonoBehaviour
             this._slider_controller._dr_slider.value += Time.deltaTime * this._input_amendment * negative;
             this._slider_controller._ur_slider.value += Time.deltaTime * this._input_amendment * negative;
         }
+        else if(Input.GetKey(KeyCode.UpArrow))
+        {
+            this._slider_controller._dl_slider.value += Time.deltaTime * this._input_amendment * negative;
+            this._slider_controller._ul_slider.value += Time.deltaTime * this._input_amendment * negative;
+        }
+        else if(Input.GetKey(KeyCode.DownArrow))
+        {
+            this._slider_controller._dr_slider.value += Time.deltaTime * this._input_amendment * negative;
+            this._slider_controller._ur_slider.value += Time.deltaTime * this._input_amendment * negative;
+        }
+        else if(Input.GetKey(KeyCode.LeftArrow))
+        {
+            this._slider_controller._ul_slider.value += Time.deltaTime * this._input_amendment * negative;
+            this._slider_controller._ur_slider.value += Time.deltaTime * this._input_amendment * negative;
+        }
+        else if(Input.GetKey(KeyCode.RightArrow))
+        {
+            this._slider_controller._dr_slider.value += Time.deltaTime * this._input_amendment * negative;
+            this._slider_controller._dl_slider.value += Time.deltaTime * this._input_amendment * negative;
+        }
         else if(Input.GetButton("RotateLeft"))
         {
 

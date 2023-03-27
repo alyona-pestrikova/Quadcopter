@@ -1,0 +1,164 @@
+[33mcommit 5036e38adf8135e9b07228ebc21a4c2fffe45c54[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: AlyaPtr <a.pestrikova@g.nsu.ru>
+Date:   Mon Mar 27 15:30:41 2023 +0700
+
+    Lidar interface added
+
+[33mcommit 31490539c8c123a66c7a60c49cc62a2a0ebd80b1[m
+Author: InfaNaSotku <infanasotku@gmail.com>
+Date:   Mon Mar 27 01:29:50 2023 +0700
+
+    Add air drag correction about height
+
+[33mcommit 1409227612388f8a4703346d131d9532ee33be32[m
+Author: InfaNaSotku <infanasotku@gmail.com>
+Date:   Mon Mar 27 00:17:21 2023 +0700
+
+    Add force correction about hight
+
+[33mcommit 1e294eb75bd13441c3ddbec53ff0cff4169503ad[m
+Author: InfaNaSotku <infanasotku@gmail.com>
+Date:   Sun Mar 26 22:06:33 2023 +0700
+
+    Add keyboard input
+
+[33mcommit d795a6f0cf854a734f97f7dfbecd510f8cb77c64[m
+Author: AlyaPtr <a.pestrikova@g.nsu.ru>
+Date:   Sun Mar 26 15:03:26 2023 +0700
+
+    Rays added
+
+[33mcommit 07d163460e9929a0d6c6871944653561f41fa7a3[m
+Author: AlyaPtr <a.pestrikova@g.nsu.ru>
+Date:   Sun Mar 26 11:47:57 2023 +0700
+
+    Arrow and torque fixed
+
+[33mcommit f6a66492cd11236d6f91de2c9ac2faf5e25f235a[m
+Author: InfaNaSotku <infanasotku@gmail.com>
+Date:   Sat Mar 25 22:48:44 2023 +0700
+
+    Add torque
+
+[33mcommit 4b4db2c022315ca06fdb44066cbdc023881969f9[m
+Author: InfaNaSotku <infanasotku@gmail.com>
+Date:   Sat Mar 25 19:42:56 2023 +0700
+
+    Link direction arrow with drone
+
+[33mcommit 2dc71cea79d542bd2e62dfcd0ef9ec6affec02ee[m
+Author: InfaNaSotku <infanasotku@gmail.com>
+Date:   Fri Mar 24 21:13:13 2023 +0700
+
+    Add spinner traction
+
+[33mcommit bb934cbb028ab804f056093e8f29bb8d9de4037b[m
+Author: AlyaPtr <a.pestrikova@g.nsu.ru>
+Date:   Fri Mar 24 01:39:31 2023 +0700
+
+    Direction arrow created
+
+[33mcommit a7859b0fd990dec6d70570299a0d8e647f036808[m
+Author: InfaNaSotku <infanasotku@gmail.com>
+Date:   Thu Mar 23 23:00:53 2023 +0700
+
+    Edit constraint field
+
+[33mcommit 1e9bdfc8359bce99278fca1102a551fba1c20c4d[m
+Author: InfaNaSotku <infanasotku@gmail.com>
+Date:   Thu Mar 23 12:26:27 2023 +0700
+
+    Add spinners acceleration
+
+[33mcommit 495f93aaf7f37f563c180c75c1da840905ebcb46[m
+Author: InfaNaSotku <infanasotku@gmail.com>
+Date:   Tue Mar 21 21:56:28 2023 +0700
+
+    Add event listeners to sliders
+
+[33mcommit 9c4057189720b9d32acfe791e505be08e9bd6659[m
+Author: InfaNaSotku <infanasotku@gmail.com>
+Date:   Tue Mar 21 20:20:24 2023 +0700
+
+    Add sliders and link their to interface and sliders
+
+[33mcommit 90d0212bac02fdf2a3072f6a861b424dc1b3bf60[m
+Author: InfaNaSotku <infanasotku@gmail.com>
+Date:   Tue Mar 21 19:04:51 2023 +0700
+
+    Add arrow
+
+[33mcommit f46f0eab859868c5bb985710924b04946f5462be[m
+Author: InfaNaSotku <infanasotku@gmail.com>
+Date:   Tue Mar 21 18:35:55 2023 +0700
+
+    Add main element layout
+
+[33mcommit bff3d683d84678cb531630c83abc3cfe4282475d[m
+Merge: bad85180 77738225
+Author: InfaNaSotku <114638168+InfaNaSotku@users.noreply.github.com>
+Date:   Tue Mar 21 18:16:10 2023 +0700
+
+    Merge pull request #1 from AlyaPtr/interface
+    
+    Interface
+
+[33mcommit 777382256094eedc43e93ee67fe399edf75dba67[m
+Author: InfaNaSotku <infanasotku@gmail.com>
+Date:   Tue Mar 21 18:08:49 2023 +0700
+
+    Clear old Script
+
+[33mcommit a1d6de5375fe223cfc3085d3e50ad513ad8e6a14[m
+Author: AlyaPtr <a.pestrikova@g.nsu.ru>
+Date:   Tue Mar 21 16:53:32 2023 +0700
+
+    Wind added
+
+[33mcommit b4e4a072be0750e5329061f7aaf738c7f40d8934[m
+Author: InfaNaSotku <infanasotku@gmail.com>
+Date:   Fri Mar 17 01:01:36 2023 +0700
+
+    Switch target (android to windows)
+
+[33mcommit afe9ff28db03acfcad5d0b871b009d652fcdf18a[m
+Author: AlyaPtr <a.pestrikova@g.nsu.ru>
+Date:   Sun Mar 12 12:21:42 2023 +0700
+
+    Joystick added
+
+[33mcommit f634c9be0cfb66054d671cd0c6a05e9dc7df9d3d[m
+Author: AlyaPtr <a.pestrikova@g.nsu.ru>
+Date:   Sat Mar 11 16:38:36 2023 +0700
+
+    .gitignore modified
+
+[33mcommit 766a3b452c1d140026e7f92333913d18f9218a30[m
+Author: AlyaPtr <a.pestrikova@g.nsu.ru>
+Date:   Sat Mar 11 16:35:32 2023 +0700
+
+    unnecessary removed 2
+
+[33mcommit 9a8881880dcfe057bb717529ca1f29ab33a7642e[m
+Author: AlyaPtr <a.pestrikova@g.nsu.ru>
+Date:   Sat Mar 11 14:09:45 2023 +0700
+
+    scene added
+
+[33mcommit bad85180e9c53f8065e26aeed3dcff6b1378a192[m
+Author: AlyaPtr <a.pestrikova@g.nsu.ru>
+Date:   Sat Mar 11 11:21:59 2023 +0700
+
+    unnecessary removed
+
+[33mcommit 337f05715ff45df85776d09bc31206372469321f[m
+Author: AlyaPtr <a.pestrikova@g.nsu.ru>
+Date:   Thu Mar 9 17:05:52 2023 +0700
+
+    start objects created
+
+[33mcommit 67d7c62790e70dd1dd4a2fcbeac5b4e820d08bae[m
+Author: Alyona <100201829+AlyaPtr@users.noreply.github.com>
+Date:   Thu Mar 9 16:33:09 2023 +0700
+
+    Initial commit
