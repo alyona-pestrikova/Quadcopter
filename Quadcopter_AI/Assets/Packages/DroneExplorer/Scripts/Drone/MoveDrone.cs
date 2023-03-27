@@ -2,10 +2,15 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using System;
+using TMPro;
 
 public class MoveDrone : MonoBehaviour
 {
     public Rigidbody _d_body; // links to "DroneRigidBody" obj
+
+    // Telemetry from drone
+    public TMP_Text _immutable_telemetry; 
+    public TMP_Text _changeable_telemetry;
 
     public Spinner[] _spinners; // spinner objs
 
@@ -48,8 +53,11 @@ public class MoveDrone : MonoBehaviour
         this._spinners[3]._traction = Spinner.Traction.Inverse;
     }
 
-
-
+    // Update is called once per frame
+    void Update()
+    {
+        this.PrintTelemetry();
+    }
 
     // Update is called once per sometime
     void FixedUpdate()
@@ -71,6 +79,31 @@ public class MoveDrone : MonoBehaviour
         }
 
     }
+
+    private void PrintTelemetry()
+    {
+        // Immutable telemetry
+        this._immutable_telemetry.text = "Force amendment: " + this._force_amendment.ToString() + "\n";
+        this._immutable_telemetry.text += "Air drag: " + this._d_body.drag.ToString() + "\n";
+        this._immutable_telemetry.text += "X: " + this._d_body.transform.position.x.ToString() + "\n";
+        this._immutable_telemetry.text += "Y: " + this._d_body.transform.position.y.ToString() + "\n";
+        this._immutable_telemetry.text += "Z: " + this._d_body.transform.position.z.ToString() + "\n";
+        this._immutable_telemetry.text += "Velocity: " + this._d_body.velocity.magnitude.ToString() + " m/s" + "\n";
+
+        // Changeable telemetry
+        this._changeable_telemetry.text = "Left Up Spinner speed: " + this._spinners[0]._speed.ToString() + "\n";
+        this._changeable_telemetry.text += "Right Down Spinner speed: " + this._spinners[1]._speed.ToString() + "\n";
+        this._changeable_telemetry.text += "Left Down Spinner speed: " + (-this._spinners[2]._speed).ToString() + "\n";
+        this._changeable_telemetry.text += "Right Up Spinner speed: " + (-this._spinners[3]._speed).ToString() + "\n";
+    }
+
+
+
+
+
+
+
+
 
 
     private void OnEnable()
