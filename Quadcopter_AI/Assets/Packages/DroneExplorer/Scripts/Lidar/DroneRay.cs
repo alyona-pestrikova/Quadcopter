@@ -6,7 +6,7 @@ public class DroneRay : MonoBehaviour
 {
     public Rigidbody _drone_body; // links to "DroneRigidBody" obj
     private Ray ray; //Ray object
-    private float _offset = 0.1f; // Ray offset relative to the drone center
+    private float _offset = 0.05f; // Ray offset relative to the drone center
 
     //Possible ray directions relative to the drone
     public enum Directions
@@ -15,8 +15,21 @@ public class DroneRay : MonoBehaviour
     }
 
 
+    public List<string> Exception; // Objects that must be ignored by lidar
     public Directions _direction; // The direction of this ray
 
+
+    // Some info about the nearest object
+    public string _nearest_obj_name; 
+    public float _nearest_distance;
+
+
+    private void Start()
+    {
+        Exception.Add("WindArea");
+        _nearest_obj_name = "";
+        _nearest_distance = 0;
+    }
 
     // Update is called once per frame
     void Update()
@@ -32,7 +45,24 @@ public class DroneRay : MonoBehaviour
         // Search for ray collisions with colliders
         if (Physics.Raycast(ray.origin, ray.direction, out hit, 1))
         {
-            Debug.Log("Hit " + hit.collider.gameObject.name + " " + _direction.ToString().ToLower());
+            bool is_exc = false;
+            for (int i = 0; i < Exception.Count; i++)
+            {
+                is_exc = (Exception[i] == hit.collider.gameObject.name);
+            }
+            if (!is_exc)
+            {
+                _nearest_obj_name = hit.collider.gameObject.name;
+                _nearest_distance = hit.distance;
+            } else
+            {
+                _nearest_distance = 0;
+                _nearest_obj_name = "";
+            }
+        } else
+        {
+            _nearest_distance = 0;
+            _nearest_obj_name = "";
         }
     }
 
