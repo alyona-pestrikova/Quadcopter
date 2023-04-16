@@ -16,7 +16,6 @@ public class SliderController : MonoBehaviour
     //Speed factor changes when value change
     void Start()
     {
-        this.SliderReset();
         this._ul_slider.onValueChanged.AddListener((value) => {
             this._interface._ul_spinner_speed_factor = value;
             this._interface.SpeedUpdate();

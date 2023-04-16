@@ -23,6 +23,10 @@ public class KeyboardView : MonoBehaviour
 
     void ButtonCheckout()
     {
+        if(this._interface._block_input)
+        {
+            return;
+        }
         float negative = 1;
         if (Input.GetKey(KeyCode.LeftControl))
         {

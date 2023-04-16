@@ -1,154 +1,103 @@
-using Unity.VisualScripting;
-using UnityEditor;
+using Unity.MLAgents.Sensors;
+using Unity.MLAgents.Actuators;
 using UnityEngine;
+using Unity.VisualScripting;
 using System;
-using TMPro;
 
-public class MoveDrone : MonoBehaviour
+public class MoveDrone : Drone
 {
-    public Rigidbody _d_body; // links to "DroneRigidBody" obj
 
-    // Telemetry from drone
-    public TMP_Text _immutable_telemetry; 
-    public TMP_Text _changeable_telemetry;
+    private Vector3 _max;
+    private Vector3 _min;
 
-    public Spinner[] _spinners; // spinner objs
 
-    public Interface _interface; // links drone with input
 
-    public Arrow _arrow; // shows direction of drone movement
-
-    public float _max_spinner_speed; // max spinner speed
-
-    // These amendments need to correct drone physics
-    private float _full_air_drag; // full air drag without height amendment
-    private float _full_force_amendment; // full force without height amendment
-    private float _force_amendment; // force with height amendment
-
-    // Parameters for torque counting
-    private float _spinner_radius; 
-    private float _air_density;
-    private float _torque_const; // constant fron torque formula
-    private float _reference_area;
-    private float _torque_amendment; // torque from formula without speed
-
-    private float _start_spinner_factor;
-
-    // Start is called before the first frame update
-    void Start()
+    public GameObject _target;
+    public SliderController _slider_controller;
+    public override void OnEpisodeBegin()
     {
-        this._max_spinner_speed = 5000;
-        this._full_force_amendment = 0.2f;
-        this._full_air_drag = 0.5f;
-
-        this._spinner_radius = 0.03f; 
-        this._air_density = 1.2f;
-        this._torque_const = 0.0025f;
-        this._reference_area = 0.007f * 0.055f;
-        this._torque_amendment = 0.5f * this._spinner_radius * this._air_density * this._torque_const * this._reference_area;
-
-        this._start_spinner_factor = 0.3f;
-
-        // Set spinner traction direction
-        this._spinners[0]._traction = Spinner.Traction.Direct;
-        this._spinners[1]._traction = Spinner.Traction.Inverse;
-        this._spinners[2]._traction = Spinner.Traction.Direct;
-        this._spinners[3]._traction = Spinner.Traction.Inverse;
-
-        this.DroneReset();
+        this._max = new Vector3(2, 8, 18);
+        this._min = new Vector3(-17, -1.29f, -1.2f);
+        this._interface.DroneReset();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void CollectObservations(VectorSensor sensor)
     {
-        this.PrintTelemetry();
+        Func<Vector3, Vector3, Vector3, Vector3> norm_vec = (vector, max_vector, min_vector) => {
+            Func<float, float, float, float> norm_coord = (value, max_value, min_value) => (value - min_value) / (max_value - min_value);
+            Vector3 rez = new Vector3();
+            rez.x = norm_coord(vector.x, max_vector.x, min_vector.x);
+            rez.y = norm_coord(vector.y, max_vector.y, min_vector.y);
+            rez.z = norm_coord(vector.z, max_vector.z, min_vector.z);
+            return rez;
+        };
+
+        Vector3 local_position = norm_vec(transform.localPosition, this._max, this._min); // [0,1]
+        Vector3 local_target_position = norm_vec(this._target.transform.localPosition, this._max, this._min); // [0,1]
+        Vector3 velocity = norm_vec(this._d_body.velocity, this._max, this._min); // [0,1]
+        Vector3 angular_velocity = norm_vec(this._d_body.angularVelocity, this._max, this._min); // [0,1]
+
+        Quaternion rotation = transform.rotation; 
+        Vector3 norm_rotation= rotation.eulerAngles / 360.0f;  // [0,1]
+
+        sensor.AddObservation(local_position);
+        sensor.AddObservation(norm_rotation);
+        sensor.AddObservation(velocity);
+        sensor.AddObservation(local_target_position);
+        sensor.AddObservation(angular_velocity);
+
+
+        sensor.AddObservation(this._slider_controller._dl_slider.value);
+        sensor.AddObservation(this._slider_controller._ul_slider.value);
+        sensor.AddObservation(this._slider_controller._dr_slider.value);
+        sensor.AddObservation(this._slider_controller._ur_slider.value);
     }
 
-    // Update is called once per sometime
-    void FixedUpdate()
+    public override void OnActionReceived(ActionBuffers actionBuffers)
     {
-        this._arrow._axis = this._d_body.velocity; // updates drone arrow direction
-
-        // Calculates hight amendment
-        float hight_amendment = (float)transform.position.y / 10; // height amendment correction
-        this._force_amendment = this._full_force_amendment / (hight_amendment < 1? 1: hight_amendment); // force correction about height
-        this._d_body.drag= this._full_air_drag / (hight_amendment < 1? 1: hight_amendment); // air drag correction about height
-        
-        // Adds force
-        foreach (var spinner in this._spinners)
+        if (this._interface._block_input)
         {
-            this._d_body.AddForceAtPosition(this._force_amendment * transform.up * Math.Abs(spinner._speed) * 
-            Time.fixedDeltaTime, spinner.transform.position); // adds force from the side of every spinner
-            
-            this._d_body.AddTorque(transform.up * this._torque_amendment * spinner._speed * spinner._speed * Math.Sign(spinner._speed)); // adds torque from every spinner
+            return;
+        }
+        this._slider_controller._dl_slider.value += Time.deltaTime * actionBuffers.ContinuousActions[0];
+        this._slider_controller._ul_slider.value += Time.deltaTime * actionBuffers.ContinuousActions[1];
+        this._slider_controller._dr_slider.value += Time.deltaTime * actionBuffers.ContinuousActions[2];
+        this._slider_controller._ur_slider.value += Time.deltaTime * actionBuffers.ContinuousActions[3];
+
+
+
+        if ((this.transform.position - this._target.transform.position).magnitude < (this._pr_position - this._target.transform.position).magnitude)
+        {
+            SetReward(0.1f);
         }
 
+        this._pr_position = transform.position;
+
+        if (this.IsTrigger)
+        {
+            SetReward(1);
+        }
+
+        if (this.transform.localPosition.z >= this._max.z || this.transform.localPosition.z <= this._min.z ||
+            this.transform.localPosition.x >= this._max.x || this.transform.localPosition.x <= this._min.x ||
+            this.transform.localPosition.y <= this._min.y || this.transform.localPosition.y >= this._max.y ||
+            this.IsCollision)
+        {
+            SetReward(-1);
+        }
+
+        if (this.transform.localPosition.z >= this._max.z || this.transform.localPosition.z <= this._min.z ||
+            this.transform.localPosition.x >= this._max.x || this.transform.localPosition.x <= this._min.x ||
+            this.transform.localPosition.y <= this._min.y || this.transform.localPosition.y >= this._max.y ||
+            this.IsTrigger || this.IsCollision)
+        {
+            EndEpisode();
+        }
+        
+
+
+        //SetReward(-0.01f);
+
     }
 
-    private void PrintTelemetry()
-    {
-        // Immutable telemetry
-        this._immutable_telemetry.text = "Force amendment: " + this._force_amendment.ToString() + "\n";
-        this._immutable_telemetry.text += "Air drag: " + this._d_body.drag.ToString() + "\n";
-        this._immutable_telemetry.text += "X: " + this._d_body.transform.position.x.ToString() + "\n";
-        this._immutable_telemetry.text += "Y: " + this._d_body.transform.position.y.ToString() + "\n";
-        this._immutable_telemetry.text += "Z: " + this._d_body.transform.position.z.ToString() + "\n";
-        this._immutable_telemetry.text += "Velocity: " + this._d_body.velocity.magnitude.ToString() + " m/s" + "\n";
-
-        // Changeable telemetry
-        this._changeable_telemetry.text = "Left Up Spinner speed: " + (this._spinners[0]._speed * (float)this._spinners[0]._traction).ToString() + "\n";
-        this._changeable_telemetry.text += "Left Down Spinner speed: " + (this._spinners[1]._speed * (float)this._spinners[1]._traction).ToString() + "\n";
-        this._changeable_telemetry.text += "Right Down Spinner speed: " + (this._spinners[2]._speed * (float)this._spinners[2]._traction).ToString() + "\n";
-        this._changeable_telemetry.text += "Right Up Spinner speed: " + (this._spinners[3]._speed * (float)this._spinners[3]._traction).ToString() + "\n";
-    }
-
-
-    // Reset Drone
-    public void DroneReset()
-    {
-        transform.localPosition = Vector3.zero;
-        transform.rotation = Quaternion.Euler(0, 0, 0);
-        this._d_body.velocity = Vector3.zero;
-        this._d_body.angularVelocity = Vector3.zero;
-
-        this._interface._dl_spinner_speed_factor = this._start_spinner_factor;
-        this._interface._dr_spinner_speed_factor = this._start_spinner_factor;
-        this._interface._ul_spinner_speed_factor = this._start_spinner_factor;
-        this._interface._ur_spinner_speed_factor = this._start_spinner_factor;
-
-        this._spinners[0]._speed = this._interface._ul_spinner_speed_factor * this._max_spinner_speed * (float)this._spinners[0]._traction;
-        this._spinners[1]._speed = this._interface._dl_spinner_speed_factor * this._max_spinner_speed * (float)this._spinners[1]._traction;
-        this._spinners[2]._speed = this._interface._dr_spinner_speed_factor * this._max_spinner_speed * (float)this._spinners[2]._traction;
-        this._spinners[3]._speed = this._interface._ur_spinner_speed_factor * this._max_spinner_speed * (float)this._spinners[3]._traction;
-
-        this._interface.SpeedUpdate();
-    }
-
-
-
-
-
-
-    private void OnEnable()
-    {
-        this._interface._onSpeedChanged += SpinnerSpeedUpdate; // adds subscribe to change speed event
-        this._interface._onResetCall += DroneReset; // adds subscribe to reset call event
-    }
-
-    
-    private void OnDisable()
-    {
-        this._interface._onSpeedChanged -= SpinnerSpeedUpdate; // deletes subscribe to change speed event
-        this._interface._onResetCall -= DroneReset; // deletes subscribe to reset call event
-    }
-
-
-    // Change spinner speed
-    private void SpinnerSpeedUpdate()
-    {
-        this._spinners[0]._next_speed = this._interface._ul_spinner_speed_factor * this._max_spinner_speed * (float)this._spinners[0]._traction;
-        this._spinners[1]._next_speed = this._interface._dl_spinner_speed_factor * this._max_spinner_speed * (float)this._spinners[1]._traction;
-        this._spinners[2]._next_speed = this._interface._dr_spinner_speed_factor * this._max_spinner_speed * (float)this._spinners[2]._traction;
-        this._spinners[3]._next_speed = this._interface._ur_spinner_speed_factor * this._max_spinner_speed * (float)this._spinners[3]._traction;
-    }
 }

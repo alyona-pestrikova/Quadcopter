@@ -510,6 +510,7 @@ GameObject:
   - component: {fileID: 6487750546373279715}
   - component: {fileID: 6487750546373279724}
   - component: {fileID: 2996380188318173707}
+  - component: {fileID: 4518077128309010526}
   m_Layer: 0
   m_Name: DroneRigidBody
   m_TagString: Untagged
@@ -562,11 +563,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _d_body: {fileID: 0}
+  _immutable_telemetry: {fileID: 0}
+  _changeable_telemetry: {fileID: 0}
   _spinners: []
-  _rays: []
   _interface: {fileID: 0}
   _arrow: {fileID: 0}
   _max_spinner_speed: 0
+--- !u!114 &4518077128309010526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6487750546373279725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 163a428543a309a4dbd4bc394eab8a0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6487750546672472116
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,6 +656,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdfcbb60a03460f4086114c0c738eed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _slider_controller: {fileID: 0}
+  _interface: {fileID: 0}
 --- !u!1 &6487750546712198212
 GameObject:
   m_ObjectHideFlags: 0

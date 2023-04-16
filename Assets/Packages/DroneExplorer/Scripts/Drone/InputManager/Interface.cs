@@ -12,6 +12,13 @@ public class Interface : MonoBehaviour
     public Action _onSpeedChanged; //action reacts when speed is changing
     public Action _onResetCall;
 
+    public bool _block_input;
+
+    void Start()
+    {
+        this._block_input = false;
+    }
+
     // Is called by input interface
     public void SpeedUpdate()
     {

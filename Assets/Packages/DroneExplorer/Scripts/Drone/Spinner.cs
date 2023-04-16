@@ -18,13 +18,14 @@ public class Spinner : MonoBehaviour
     public Traction _traction; // spinner traction direction
 
     private Vector3 _local_axis; // makes rotate axis
-   
+    public Vector3 _start_position;
 
     // Default values
     void Start()
     {
         this._acceleration = 500;
         this._local_axis = new Vector3(0, 0, 1);
+        this._start_position = transform.position;
     }
 
     // Update is called once per frame
