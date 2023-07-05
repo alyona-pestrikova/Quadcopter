@@ -15,35 +15,35 @@ public class DroneAdaptive : BaseTargetType
     }
     public override void Alarm()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Alarm!");
     }
     public override void Drop()
     {
-        throw new System.NotImplementedException();
+        return;
     }
     public override void Freeze()
     {
-        throw new System.NotImplementedException();
+        return;
     }
     public override string GetCompoundBehaviourName()
     {
-        throw new System.NotImplementedException();
+        return "New";
     }
     public override Condition GetCurrentCondition()
     {
-        throw new System.NotImplementedException();
+        return _current_condition;
     }
     public override void Log(string body)
     {
-        throw new System.NotImplementedException();
+        return;
     }
     public override void TargetReset()
     {
-        throw new System.NotImplementedException();
+        return;
     }
     public override void UnFreeze()
     {
-        throw new System.NotImplementedException();
+        return;
     }
 }
 

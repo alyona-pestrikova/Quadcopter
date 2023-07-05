@@ -3,10 +3,14 @@ using System.Collections;
 using UnityEngine;
 using System;
 using TMPro;
+using FSAgent.Agent;
+using FSAgent.Agent.Component;
 
 public class Drone : Agent
 {
     public Rigidbody _d_body; // links to "DroneRigidBody" obj
+
+    public SliderController _slider_controller;
 
     // Telemetry from drone
     public TMP_Text _immutable_telemetry;
@@ -68,12 +72,21 @@ public class Drone : Agent
         this._pr_position = transform.position;
 
         this._interface.DroneReset();
+
+        //StartAgent();
     }
+
 
     // Update is called once per frame
     void Update()
     {
         this.PrintTelemetry();
+    }
+
+    public void kek()
+    {
+
+        _slider_controller._dl_slider.value += (float)0.05;
     }
 
     // Update is called once per sometime

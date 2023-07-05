@@ -37,7 +37,7 @@ namespace FSAgent.LogicObjects
             _name = name;
             _conditions = new Dictionary<int, int>();
 
-            if (_default_action == null)
+            if (_default_action != null)
             {
                 Size = 1;
                 Level = 1;
@@ -45,7 +45,7 @@ namespace FSAgent.LogicObjects
             else
             {
                 int max_level = 1;
-                foreach (var behaviour in _compound_action!)
+                foreach (var behaviour in _compound_action)
                 {
                     if (behaviour.Level > max_level)
                     {

@@ -9,8 +9,7 @@ public class DroneReaction : BaseTargetType
     }
     public override void Start()
     {
-        Debug.Log("Start!");
-        //_predicates.Add(new Predicate)
+        //_predicates.Add(n Predicate)
     }
     public override void Alarm()
     {
@@ -30,7 +29,7 @@ public class DroneReaction : BaseTargetType
     }
     public override Condition GetCurrentCondition()
     {
-        throw new System.NotImplementedException();
+        return 1;
     }
     public override void Log(string body)
     {

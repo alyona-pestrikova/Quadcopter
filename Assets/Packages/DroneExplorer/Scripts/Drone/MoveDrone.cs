@@ -11,7 +11,7 @@ public class MoveDrone : Drone
 
 
     public GameObject _target;
-    public SliderController _slider_controller;
+    public SliderController _slider_controller1;
     public override void OnEpisodeBegin()
     {
         this._max = new Vector3(2, 8, 18);
@@ -45,10 +45,10 @@ public class MoveDrone : Drone
         sensor.AddObservation(angular_velocity);
 
 
-        sensor.AddObservation(this._slider_controller._dl_slider.value);
-        sensor.AddObservation(this._slider_controller._ul_slider.value);
-        sensor.AddObservation(this._slider_controller._dr_slider.value);
-        sensor.AddObservation(this._slider_controller._ur_slider.value);
+        sensor.AddObservation(this._slider_controller1._dl_slider.value);
+        sensor.AddObservation(this._slider_controller1._ul_slider.value);
+        sensor.AddObservation(this._slider_controller1._dr_slider.value);
+        sensor.AddObservation(this._slider_controller1._ur_slider.value);
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
@@ -57,10 +57,10 @@ public class MoveDrone : Drone
         {
             return;
         }
-        this._slider_controller._dl_slider.value += Time.deltaTime * actionBuffers.ContinuousActions[0];
-        this._slider_controller._ul_slider.value += Time.deltaTime * actionBuffers.ContinuousActions[1];
-        this._slider_controller._dr_slider.value += Time.deltaTime * actionBuffers.ContinuousActions[2];
-        this._slider_controller._ur_slider.value += Time.deltaTime * actionBuffers.ContinuousActions[3];
+        this._slider_controller1._dl_slider.value += Time.deltaTime * actionBuffers.ContinuousActions[0];
+        this._slider_controller1._ul_slider.value += Time.deltaTime * actionBuffers.ContinuousActions[1];
+        this._slider_controller1._dr_slider.value += Time.deltaTime * actionBuffers.ContinuousActions[2];
+        this._slider_controller1._ur_slider.value += Time.deltaTime * actionBuffers.ContinuousActions[3];
 
 
 

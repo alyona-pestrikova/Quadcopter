@@ -150,8 +150,10 @@ namespace FSAgent.Agent.Component
 
         private void ExecuteAction(IEnumerable<int> action)
         {
+
             foreach (var movement in action)
             {
+
                 if (IsCancel)
                 {
                     return;
@@ -406,7 +408,6 @@ namespace FSAgent.Agent.Component
                 case 1:
                     return false;
             }
-
             // Sorted rank list the all of behaviors
             // Item1 - points, Item2 - coresponding behavior pos
             List<Tuple<int, int>> rank = GetBehaviorRank(cur_cond);
