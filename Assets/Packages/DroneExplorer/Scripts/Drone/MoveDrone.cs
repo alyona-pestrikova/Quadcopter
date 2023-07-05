@@ -1,7 +1,6 @@
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
 using UnityEngine;
-using Unity.VisualScripting;
 using System;
 
 public class MoveDrone : Drone
@@ -9,7 +8,6 @@ public class MoveDrone : Drone
 
     private Vector3 _max;
     private Vector3 _min;
-
 
 
     public GameObject _target;
