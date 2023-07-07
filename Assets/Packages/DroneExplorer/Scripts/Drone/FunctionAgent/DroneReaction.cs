@@ -35,16 +35,20 @@ public class DroneReaction : BaseTargetType
     {
         throw new System.NotImplementedException();
     }
-    public override void TargetReset()
-    {
-        throw new System.NotImplementedException();
-    }
     public override void UnFreeze()
     {
         throw new System.NotImplementedException();
     }
 
+    public override object GetPreviousTargetState()
+    {
+        throw new System.NotImplementedException();
+    }
 
+    public override void SetPreviousTargetState(object previous_state)
+    {
+        return;
+    }
 
 }
 

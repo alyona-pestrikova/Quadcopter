@@ -1,6 +1,9 @@
 ﻿using FSAgent.Agent.Component;
 using FSAgent.LogicObjects;
 using UnityEngine;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+
 public class DroneAdaptive : BaseTargetType
 {
     Condition _current_condition;
@@ -11,7 +14,7 @@ public class DroneAdaptive : BaseTargetType
 	}
     public override void Start()
     {
-        //_predicates.Add(new Predicate)
+        
     }
     public override void Alarm()
     {
@@ -19,25 +22,9 @@ public class DroneAdaptive : BaseTargetType
     }
     public override void Drop()
     {
-        return;
-    }
+        foreach (var waiter in ((Manager.Wrapper)_driver).DroneDrop());
+    } 
     public override void Freeze()
-    {
-        return;
-    }
-    public override string GetCompoundBehaviourName()
-    {
-        return "New";
-    }
-    public override Condition GetCurrentCondition()
-    {
-        return _current_condition;
-    }
-    public override void Log(string body)
-    {
-        return;
-    }
-    public override void TargetReset()
     {
         return;
     }
@@ -45,5 +32,37 @@ public class DroneAdaptive : BaseTargetType
     {
         return;
     }
+    public override string GetCompoundBehaviourName()
+    {
+        return "TurnLeft";
+    }
+    public override Condition GetCurrentCondition()
+    {
+        foreach (var waiter in ((Manager.Wrapper)_driver).GetCurrentState()) ;
+        if (((Manager.Wrapper.DroneInformation)((Manager.Wrapper)_driver)._current_state)._ur_s_s_f != 0.3f ||
+            ((Manager.Wrapper.DroneInformation)((Manager.Wrapper)_driver)._current_state)._dr_s_s_f != 0.3f ||
+            ((Manager.Wrapper.DroneInformation)((Manager.Wrapper)_driver)._current_state)._ul_s_s_f != 0.3f)
+        {
+            return 2;
+        }
+        return 0;
+    }
+    public override void Log(string body)
+    {
+        Debug.Log(body);    
+        return;
+    }
+
+    public override object GetPreviousTargetState()
+    {
+        foreach (var waiter in ((Manager.Wrapper)_driver).GetCurrentState());
+        return ((Manager.Wrapper)_driver)._current_state;
+    }
+
+    public override void SetPreviousTargetState(object previous_state)
+    {
+        foreach (var waiter in ((Manager.Wrapper)_driver).DroneReset(previous_state));
+    }
+
 }
 

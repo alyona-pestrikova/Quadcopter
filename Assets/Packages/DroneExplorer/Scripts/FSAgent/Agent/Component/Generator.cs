@@ -22,6 +22,7 @@ namespace FSAgent.Agent.Component
             // More to less level
             _leveled_behaviors = new List<Behavior<TargetType>>();
             _estimate_deep = 0;
+            _execute_deep = 0;
             IsGenerate = true;
             IsCancel = false;
             _chain = new Queue<int>();
@@ -71,12 +72,12 @@ namespace FSAgent.Agent.Component
         }
 
         private int _estimate_deep;
-
+        private int _execute_deep;
 
         private int EstimateChain(Condition cur_condition)
         {
             int reward = 0;
-            if (_estimate_deep > 10)
+            if (_estimate_deep > 5)
             {
                 return 0;
             }
@@ -94,9 +95,11 @@ namespace FSAgent.Agent.Component
                         continue;
                     }
                     if (_target.IsFinish(l_behavior._conditions[cur_condition]))
-                        return _target.GetRewardFromCodition(cur_condition);
+                        return _target.GetRewardFromCondition(cur_condition);
+                    _estimate_deep++;
                     int cur_reward =
                         EstimateChain(l_behavior._conditions[cur_condition]);
+                    _estimate_deep--;
                     if (cur_reward > reward)
                     {
                         reward = cur_reward;
@@ -150,6 +153,10 @@ namespace FSAgent.Agent.Component
 
         private void ExecuteAction(IEnumerable<int> action)
         {
+            if (IsGenerate)
+            {
+                _target.TargetSave();
+            }
 
             foreach (var movement in action)
             {
@@ -249,7 +256,7 @@ namespace FSAgent.Agent.Component
                 {
                     rank.Add(new Tuple<int, int>(0, pos));
                 }
-
+                pos++;
             }
 
             rank.Sort((Tuple<int, int> first, Tuple<int, int> second) =>
@@ -389,11 +396,21 @@ namespace FSAgent.Agent.Component
             return false;
         }
 
+
+
         private bool Execute()
         {
+            _execute_deep++;
+            _target.Log(_execute_deep.ToString());
+            if (_execute_deep > 20)
+            {
+                _execute_deep--;
+                return false;
+            }
             // Cancel execute
             if (IsCancel)
             {
+                _execute_deep--;
                 return true;
             }
 
@@ -404,14 +421,17 @@ namespace FSAgent.Agent.Component
             switch (state)
             {
                 case 0:
+                    _execute_deep--;
                     return true;
                 case 1:
+                    _execute_deep--;
                     return false;
             }
             // Sorted rank list the all of behaviors
             // Item1 - points, Item2 - coresponding behavior pos
             List<Tuple<int, int>> rank = GetBehaviorRank(cur_cond);
 
+            _execute_deep--;
             // Checks sorted behavior list and execute
             return CheckSortedBehaviors(rank, cur_cond);
         }

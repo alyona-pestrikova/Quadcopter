@@ -4,12 +4,10 @@ using System.Collections.Generic;
 using Unity.MLAgents.Actuators;
 using UnityEngine;
 
-public class RightBackDown : AgentDecorator<DroneAdaptive>
+public class RightBackDown : DefaultMove
 {
-    protected override IEnumerable<int> Action()
+    protected override List<double> GetValue()
     {
-        ((Manager.Wrapper)_target._driver).
-            ChangeSliderValue(new List<double> { 0, 0, -0.05, 0 });
-        yield return 0;
+        return new List<double> { 0, 0, -0.05, 0 };
     }
 }

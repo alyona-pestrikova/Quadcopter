@@ -10,7 +10,7 @@ public class MoveDrone : Drone
     private Vector3 _min;
 
 
-    public GameObject _target;
+    
     public SliderController _slider_controller1;
     public override void OnEpisodeBegin()
     {

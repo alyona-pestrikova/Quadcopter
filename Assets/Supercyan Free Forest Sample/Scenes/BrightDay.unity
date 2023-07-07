@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.15678898, g: 0.15678898, b: 0.15678898, a: 0.1}
+  m_IndirectSpecularColor: {r: 0.17075679, g: 0.2851594, b: 0.33586287, a: 0.1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3995,6 +3995,7 @@ MonoBehaviour:
   MaxStep: 0
   _d_body: {fileID: 1009514007}
   _slider_controller: {fileID: 1810258585}
+  _target: {fileID: 1709866794}
   _immutable_telemetry: {fileID: 471652497}
   _changeable_telemetry: {fileID: 234416611}
   _spinners:
@@ -4006,6 +4007,7 @@ MonoBehaviour:
   _arrow: {fileID: 1047810979}
   _max_spinner_speed: 0
   _start_spinner_factor: 0
+  _pr_position: {x: 0, y: 0, z: 0}
 --- !u!1 &1015735345
 GameObject:
   m_ObjectHideFlags: 0

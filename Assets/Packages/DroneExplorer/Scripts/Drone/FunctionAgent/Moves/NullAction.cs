@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using Unity.MLAgents.Actuators;
 using UnityEngine;
 
-public class LeftBackDown : DefaultMove
+public class NullAction : DefaultMove
 {
     protected override List<double> GetValue()
     {
-        return new List<double> { -0.05, 0, 0, 0 };
+        return new List<double> { 0, 0, 0, 0 };
     }
 }

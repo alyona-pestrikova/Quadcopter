@@ -1,11 +1,15 @@
 ﻿using FSAgent.LogicObjects;
 using System.Collections.Generic;
+using UnityEditor.Compilation;
+
 namespace FSAgent.Agent.Component
 {
     public abstract class BaseTargetType
     {
         // We need these only for seeing
         public readonly List<Predicate> _predicates;
+
+        Stack<object> _target_state_queue;
 
         // Accessor between agent and executer
         public object _driver;
@@ -20,11 +24,8 @@ namespace FSAgent.Agent.Component
                 false, int.MinValue)
             };
             _driver = new object();
+            _target_state_queue = new Stack<object>();
         }
-
-
-        // Reset last movement done by agent
-        public abstract void TargetReset();
 
         // Calls when agent doesn't know what it should to do
         public abstract void Alarm();
@@ -50,6 +51,23 @@ namespace FSAgent.Agent.Component
         // Should to unfreeze learning platform
         public abstract void UnFreeze();
 
+        // Set last movement done by agent
+        public abstract void SetPreviousTargetState(object previous_state);
+
+        // Get last movement done by agent
+        public abstract object GetPreviousTargetState();
+
+        // Save last movement done by agent
+        public void TargetSave()
+        {
+            _target_state_queue.Push(GetPreviousTargetState());
+        }
+
+        // Reset last movement done by agent
+        public void TargetReset()
+        {
+            SetPreviousTargetState(_target_state_queue.Pop());
+        }
         public int FindPredicate(string name)
         {
             for (int i = 0; i < _predicates.Count; i++)
@@ -65,15 +83,14 @@ namespace FSAgent.Agent.Component
         internal bool GetPredicateState(int
             position, Condition condition)
         {
-            int pow = 2;
             for (int i = 0; i < position; i++)
             {
-                pow *= 2;
+                condition /= 2;
             }
-            return condition % pow == 1 ? true : false;
+            return condition % 2 == 1;
         }
 
-        internal int GetRewardFromCodition(Condition condition)
+        internal int GetRewardFromCondition(Condition condition)
         {
             int pos = 0;
             int reward = 0;
@@ -97,7 +114,7 @@ namespace FSAgent.Agent.Component
         // Considers that fail bit is second bit
         internal bool IsFail(Condition condition)
         {
-            return condition % 4 == 1 ? true : false;
+            return GetPredicateState(1, condition);
         }
 
         internal bool IsNeedToRemember(Condition condition)

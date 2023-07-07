@@ -11,6 +11,7 @@ public class Drone : Agent
     public Rigidbody _d_body; // links to "DroneRigidBody" obj
 
     public SliderController _slider_controller;
+    public GameObject _target;
 
     // Telemetry from drone
     public TMP_Text _immutable_telemetry;
@@ -42,10 +43,8 @@ public class Drone : Agent
     public bool IsCollision { get; set; }
     public bool IsTrigger { get; set; }
 
-
+    public Vector3 _pr_position;
     // Drone position 
-
-    protected Vector3 _pr_position; // previous drone position in absolute coordinates
 
 
     // Start is called before the first frame update
@@ -69,7 +68,6 @@ public class Drone : Agent
         this._spinners[2]._traction = Spinner.Traction.Direct;
         this._spinners[3]._traction = Spinner.Traction.Inverse;
 
-        this._pr_position = transform.position;
 
         this._interface.DroneReset();
 
@@ -81,12 +79,6 @@ public class Drone : Agent
     void Update()
     {
         this.PrintTelemetry();
-    }
-
-    public void kek()
-    {
-
-        _slider_controller._dl_slider.value += (float)0.05;
     }
 
     // Update is called once per sometime
@@ -127,16 +119,19 @@ public class Drone : Agent
     }
 
 
-
-
-    // Reset Drone
-    public void DroneReset()
+    public void DroneUpdate(float dl_s_s_f, float dr_s_s_f, float ul_s_s_f, float ur_s_s_f, 
+        bool IsCollision, bool IsTrigger, Vector3 local_position, Quaternion rotation,
+        Vector3 velocity, Vector3 angular_velocity)
     {
-        StartCoroutine(ResetRigidbody());
-        this._interface._dl_spinner_speed_factor = this._start_spinner_factor;
-        this._interface._dr_spinner_speed_factor = this._start_spinner_factor;
-        this._interface._ul_spinner_speed_factor = this._start_spinner_factor;
-        this._interface._ur_spinner_speed_factor = this._start_spinner_factor;
+        transform.localPosition = local_position;
+        transform.rotation = rotation;
+        this._d_body.velocity = velocity;
+        this._d_body.angularVelocity = angular_velocity;
+        //StartCoroutine(ResetRigidbody(local_position, rotation, velocity, angular_velocity));
+        this._interface._dl_spinner_speed_factor = dl_s_s_f;
+        this._interface._dr_spinner_speed_factor = dr_s_s_f;
+        this._interface._ul_spinner_speed_factor = ul_s_s_f;
+        this._interface._ur_spinner_speed_factor = ur_s_s_f;
         this._interface.SpeedUpdate();
 
         this._spinners[0]._speed = this._interface._ul_spinner_speed_factor * this._max_spinner_speed * (float)this._spinners[0]._traction;
@@ -146,18 +141,35 @@ public class Drone : Agent
 
         this._pr_position = transform.position;
 
-        this.IsCollision = false;
-        this.IsTrigger = false;
+        this.IsCollision = IsCollision;
+        this.IsTrigger = IsTrigger;
+
+
     }
-    IEnumerator ResetRigidbody()
+
+    // Reset Drone
+    public void DroneReset()
+    {
+        DroneUpdate(this._start_spinner_factor,
+            this._start_spinner_factor,
+            this._start_spinner_factor,
+            this._start_spinner_factor,
+            false, false,
+            Vector3.zero,
+            Quaternion.Euler(Vector3.zero),
+            Vector3.zero,
+            Vector3.zero);
+    }
+    IEnumerator ResetRigidbody(Vector3 local_position, Quaternion rotation,
+        Vector3 velocity, Vector3 angular_velocity)
     {
         this._interface._block_input = true;
-        while (this._d_body.angularVelocity != Vector3.zero)
+        while (this._d_body.angularVelocity != angular_velocity)
         {
-            transform.localPosition = Vector3.zero;
-            transform.rotation = Quaternion.Euler(Vector3.zero);
-            this._d_body.velocity = Vector3.zero;
-            this._d_body.angularVelocity = Vector3.zero;
+            transform.localPosition = local_position;
+            transform.rotation = rotation;
+            this._d_body.velocity = velocity;
+            this._d_body.angularVelocity = angular_velocity;
             yield return new WaitForFixedUpdate();
         }
         this._interface._block_input = false;
