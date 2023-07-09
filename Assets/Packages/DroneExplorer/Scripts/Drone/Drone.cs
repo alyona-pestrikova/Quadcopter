@@ -127,6 +127,7 @@ public class Drone : Agent
         Vector3 velocity, Vector3 angular_velocity)
     {
         IsUpdated = false;
+        //StopAllCoroutines();
         StartCoroutine(ResetRigidbody(local_position, rotation, velocity, angular_velocity));
         this._interface._dl_spinner_speed_factor = dl_s_s_f;
         this._interface._dr_spinner_speed_factor = dr_s_s_f;
@@ -164,11 +165,14 @@ public class Drone : Agent
         Vector3 velocity, Vector3 angular_velocity)
     {
         this._interface._block_input = true;
-        transform.localPosition = local_position;
-        transform.rotation = rotation;
-        this._d_body.velocity = velocity;
-        this._d_body.angularVelocity = angular_velocity;
-        yield return new WaitForFixedUpdate();
+        while (this._d_body.angularVelocity != angular_velocity)
+        {
+            transform.localPosition = local_position;
+            transform.rotation = rotation;
+            this._d_body.velocity = velocity;
+            this._d_body.angularVelocity = angular_velocity;
+            yield return new WaitForFixedUpdate();
+        }
         this._interface._block_input = false;
         IsUpdated = true;
     }

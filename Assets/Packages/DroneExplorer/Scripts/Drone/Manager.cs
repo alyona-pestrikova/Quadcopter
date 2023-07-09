@@ -66,6 +66,7 @@ public class Manager : MonoBehaviour
         public bool IsDropped { get; private set; }
         public bool IsResetted { get; private set; }
         public bool IsCurrentStateGetted { get; private set; }
+        public bool IsUpdated;
 
         /*
          * 0 - Left Back
@@ -111,7 +112,6 @@ public class Manager : MonoBehaviour
                 ((DroneInformation)_previous_state)._rotation,
                 ((DroneInformation)_previous_state)._velocity,
                 ((DroneInformation)_previous_state)._angular_velocity);
-            while (_wrapped_entity.IsUpdated);
             IsResetted = false;
             _reset_mutex.ReleaseMutex();
         }
@@ -152,6 +152,7 @@ public class Manager : MonoBehaviour
             IsDropped = false;
             IsResetted = false;
             IsCurrentStateGetted = false;
+            IsUpdated = _wrapped_entity.IsUpdated;
         }
 
         public IEnumerable<int> ChangeSliderValue(List<double> value)
@@ -186,6 +187,10 @@ public class Manager : MonoBehaviour
             IsResetted = true;
             _reset_mutex.ReleaseMutex();
             while (IsResetted)
+            {
+                yield return 0;
+            }
+            while (!IsUpdated)
             {
                 yield return 0;
             }
@@ -232,6 +237,7 @@ public class Manager : MonoBehaviour
         {
             _driver.CallGetCurrentState();
         }
+        _driver.IsUpdated = _drone.IsUpdated;
     }
 
     void Update()
