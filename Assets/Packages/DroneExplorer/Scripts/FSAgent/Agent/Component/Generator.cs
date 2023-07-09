@@ -40,6 +40,7 @@ namespace FSAgent.Agent.Component
             _leveled_behaviors.Sort((Behavior<TargetType> first, Behavior<TargetType> second) =>
             second.Level.CompareTo(first.Level));
             _estimate_deep = 0;
+            _execute_deep = 0;
             IsGenerate = true;
             IsCancel = false;
             _chain = new Queue<int>();
@@ -400,8 +401,8 @@ namespace FSAgent.Agent.Component
 
         private bool Execute()
         {
-            _execute_deep++;
             _target.Log(_execute_deep.ToString());
+            _execute_deep++;
             if (_execute_deep > 20)
             {
                 _execute_deep--;
@@ -430,10 +431,10 @@ namespace FSAgent.Agent.Component
             // Sorted rank list the all of behaviors
             // Item1 - points, Item2 - coresponding behavior pos
             List<Tuple<int, int>> rank = GetBehaviorRank(cur_cond);
-
+            bool rezult = CheckSortedBehaviors(rank, cur_cond);
             _execute_deep--;
             // Checks sorted behavior list and execute
-            return CheckSortedBehaviors(rank, cur_cond);
+            return rezult;
         }
     }   
 }

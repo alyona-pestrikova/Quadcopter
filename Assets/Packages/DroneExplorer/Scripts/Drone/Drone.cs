@@ -3,15 +3,18 @@ using System.Collections;
 using UnityEngine;
 using System;
 using TMPro;
-using FSAgent.Agent;
-using FSAgent.Agent.Component;
 
 public class Drone : Agent
 {
     public Rigidbody _d_body; // links to "DroneRigidBody" obj
 
+
     public SliderController _slider_controller;
+
+    
     public GameObject _target;
+
+    public bool IsUpdated;
 
     // Telemetry from drone
     public TMP_Text _immutable_telemetry;
@@ -37,11 +40,11 @@ public class Drone : Agent
     private float _reference_area;
     private float _torque_amendment; // torque from formula without speed
 
-    public float _start_spinner_factor; 
+    public float _start_spinner_factor;
 
     // Collision and trigger events
-    public bool IsCollision { get; set; }
-    public bool IsTrigger { get; set; }
+    public bool IsCollision;
+    public bool IsTrigger;
 
     public Vector3 _pr_position;
     // Drone position 
@@ -123,11 +126,8 @@ public class Drone : Agent
         bool IsCollision, bool IsTrigger, Vector3 local_position, Quaternion rotation,
         Vector3 velocity, Vector3 angular_velocity)
     {
-        transform.localPosition = local_position;
-        transform.rotation = rotation;
-        this._d_body.velocity = velocity;
-        this._d_body.angularVelocity = angular_velocity;
-        //StartCoroutine(ResetRigidbody(local_position, rotation, velocity, angular_velocity));
+        IsUpdated = false;
+        StartCoroutine(ResetRigidbody(local_position, rotation, velocity, angular_velocity));
         this._interface._dl_spinner_speed_factor = dl_s_s_f;
         this._interface._dr_spinner_speed_factor = dr_s_s_f;
         this._interface._ul_spinner_speed_factor = ul_s_s_f;
@@ -164,15 +164,13 @@ public class Drone : Agent
         Vector3 velocity, Vector3 angular_velocity)
     {
         this._interface._block_input = true;
-        while (this._d_body.angularVelocity != angular_velocity)
-        {
-            transform.localPosition = local_position;
-            transform.rotation = rotation;
-            this._d_body.velocity = velocity;
-            this._d_body.angularVelocity = angular_velocity;
-            yield return new WaitForFixedUpdate();
-        }
+        transform.localPosition = local_position;
+        transform.rotation = rotation;
+        this._d_body.velocity = velocity;
+        this._d_body.angularVelocity = angular_velocity;
+        yield return new WaitForFixedUpdate();
         this._interface._block_input = false;
+        IsUpdated = true;
     }
 
 

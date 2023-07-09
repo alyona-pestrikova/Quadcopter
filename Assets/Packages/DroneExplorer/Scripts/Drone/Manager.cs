@@ -111,6 +111,7 @@ public class Manager : MonoBehaviour
                 ((DroneInformation)_previous_state)._rotation,
                 ((DroneInformation)_previous_state)._velocity,
                 ((DroneInformation)_previous_state)._angular_velocity);
+            while (_wrapped_entity.IsUpdated);
             IsResetted = false;
             _reset_mutex.ReleaseMutex();
         }
