@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using FSAgent.LogicObjects;
 using System.Runtime.ExceptionServices;
+using System.Linq;
 
 namespace FSAgent.Agent.Component
 {
@@ -25,7 +26,7 @@ namespace FSAgent.Agent.Component
             _execute_deep = 0;
             IsGenerate = true;
             IsCancel = false;
-            _chain = new Queue<int>();
+            _chain = new Stack<int>();
         }
 
         public Generator(TargetType target, List<Behavior<TargetType>> behaviors)
@@ -43,7 +44,7 @@ namespace FSAgent.Agent.Component
             _execute_deep = 0;
             IsGenerate = true;
             IsCancel = false;
-            _chain = new Queue<int>();
+            _chain = new Stack<int>();
         }
 
         public void Run()
@@ -58,6 +59,10 @@ namespace FSAgent.Agent.Component
                 _target.Log("Agent coudn't find right existing chain");
                 _target.Alarm();
             }
+            else
+            {
+                _target.Log("Agent successfuly found right chain");
+            }
         }
         public void Create()
         {
@@ -69,6 +74,10 @@ namespace FSAgent.Agent.Component
             if (!Execute())
             {
                 _target.Log("Agent coudn't find the chain");
+            }
+            else
+            {
+                _target.Log("Agent successfuly found right chain");
             }
         }
 
@@ -111,14 +120,14 @@ namespace FSAgent.Agent.Component
         }
 
         // Current compound of actions
-        private Queue<int> _chain;
+        private Stack<int> _chain;
 
 
         private Queue<Behavior<TargetType>> CloneChain()
         {
             Queue<Behavior<TargetType>> clone =
                 new Queue<Behavior<TargetType>>();
-            foreach(var pos in _chain)
+            foreach(var pos in _chain.Reverse())
             {
                 clone.Enqueue(_behaviors[pos]);
             }
@@ -222,7 +231,8 @@ namespace FSAgent.Agent.Component
                          */
                         if (_leveled_behaviors[i].Level <= new_behavior.Level)
                         {
-                            _leveled_behaviors.Insert(i, new_behavior); 
+                            _leveled_behaviors.Insert(i, new_behavior);
+                            break;
                         }
                     }
                     _target.UnFreeze();
@@ -328,18 +338,18 @@ namespace FSAgent.Agent.Component
                     GetCurrentCondition();
             }
 
-            _chain.Enqueue(sorted_behavior.Item2);
+            _chain.Push(sorted_behavior.Item2);
 
             if (Execute())
             {
-                _chain.Dequeue();
+                _chain.Pop();
                 return 0;
             }
             else
             {
                 if (!IsGenerate)
                 {
-                    _chain.Dequeue();
+                    _chain.Pop();
                     return 1;
                 }
             }
@@ -351,8 +361,9 @@ namespace FSAgent.Agent.Component
             {
                 return 0;
             }
-
             _target.TargetReset();
+            _chain.Pop();
+
             return 2;
         }
 
@@ -375,11 +386,14 @@ namespace FSAgent.Agent.Component
                         return false;
                 }
                 pos++;
+
             }
 
             // [left, right)
             List<int> random_positions = GetRandomIndexList(pos, rank.Count);
-
+            // Levels sort
+            random_positions.Sort((int first, int second) =>
+            _behaviors[rank[second].Item2].Level.CompareTo(_behaviors[rank[first].Item2].Level));
             foreach (var rand_pos in random_positions)
             {
                 int state = CheckSortedBehavior(rank[rand_pos], condition);
@@ -393,7 +407,6 @@ namespace FSAgent.Agent.Component
                 pos++;
             }
 
-            _chain.Dequeue();
             return false;
         }
 
@@ -403,11 +416,7 @@ namespace FSAgent.Agent.Component
         {
             _target.Log(_execute_deep.ToString());
             _execute_deep++;
-            if (_execute_deep > 20)
-            {
-                _execute_deep--;
-                return false;
-            }
+
             // Cancel execute
             if (IsCancel)
             {

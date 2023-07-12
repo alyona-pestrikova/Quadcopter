@@ -27,10 +27,10 @@ namespace FSAgent.Agent
 
         public FunctionAgent(object driver)
         {
-            rDEFAULTCOMPOUNDPATH = "/saved/r_d_comp_p";
-            aDEFAULTCOMPOUNDPATH = "/saved/a_d_comp_p";
-            rDEFAULTCONDITIONSPATH = "/saved/r_d_cond_p";
-            aDEFAULTCONDITIONSPATH = "/saved/a_d_cond_p";
+            rDEFAULTCOMPOUNDPATH = "../saved/r_d_comp_p";
+            aDEFAULTCOMPOUNDPATH = "../saved/a_d_comp_p";
+            rDEFAULTCONDITIONSPATH = "../saved/r_d_cond_p";
+            aDEFAULTCONDITIONSPATH = "../saved/a_d_cond_p";
 
 
 

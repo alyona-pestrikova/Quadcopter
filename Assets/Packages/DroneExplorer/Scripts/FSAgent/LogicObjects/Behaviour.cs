@@ -111,17 +111,23 @@ namespace FSAgent.LogicObjects
             {
                 output += $" {condition.Key} {condition.Value}";
             }
+            output += "\n";
             File.AppendAllText(path, output);
         }
         // Saves compound action
         internal void SaveCompoundAction(string path)
         {
+            if (_compound_action == null)
+            {
+                return;
+            }
             string output = _name ??
                 "UnknownAction";
             foreach (var name in GetCompoundNames())
             {
                 output += $" {name}";
             }
+            output += "\n";
             File.AppendAllText(path, output);
         }
     }

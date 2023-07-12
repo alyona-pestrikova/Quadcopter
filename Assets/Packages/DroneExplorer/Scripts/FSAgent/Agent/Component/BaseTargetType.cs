@@ -1,4 +1,5 @@
 ﻿using FSAgent.LogicObjects;
+using Google.Protobuf.WellKnownTypes;
 using System.Collections.Generic;
 using UnityEditor.Compilation;
 
@@ -9,7 +10,7 @@ namespace FSAgent.Agent.Component
         // We need these only for seeing
         public readonly List<Predicate> _predicates;
 
-        Stack<object> _target_state_queue;
+        public readonly Stack<object> _target_state_stack;
 
         // Accessor between agent and executer
         public object _driver;
@@ -24,7 +25,7 @@ namespace FSAgent.Agent.Component
                 false, int.MinValue)
             };
             _driver = new object();
-            _target_state_queue = new Stack<object>();
+            _target_state_stack = new Stack<object>();
         }
 
         // Calls when agent doesn't know what it should to do
@@ -60,13 +61,13 @@ namespace FSAgent.Agent.Component
         // Save last movement done by agent
         public void TargetSave()
         {
-            _target_state_queue.Push(GetPreviousTargetState());
+            _target_state_stack.Push(GetPreviousTargetState());
         }
 
         // Reset last movement done by agent
         public void TargetReset()
         {
-            SetPreviousTargetState(_target_state_queue.Pop());
+            SetPreviousTargetState(_target_state_stack.Pop());
         }
         public int FindPredicate(string name)
         {
@@ -83,11 +84,7 @@ namespace FSAgent.Agent.Component
         internal bool GetPredicateState(int
             position, Condition condition)
         {
-            for (int i = 0; i < position; i++)
-            {
-                condition /= 2;
-            }
-            return condition % 2 == 1;
+            return (condition & (1 << (position))) != 0;
         }
 
         internal int GetRewardFromCondition(Condition condition)

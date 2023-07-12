@@ -45,9 +45,15 @@ public class Manager : MonoBehaviour
             public Vector3 _velocity;
             public Vector3 _angular_velocity;
             public Vector3 _goal_position;
+            public Vector3 _up;
+            public Vector3 _position;
+            public float _angle;
+            public float _pr_angle;
+            public Vector3 _forward;
             public DroneInformation(float dl_s_s_f, float dr_s_s_f, float ul_s_s_f, float ur_s_s_f, 
                 bool IsCollisionVal, bool IsTriggerVal, Vector3 local_position, Quaternion rotation,
-                Vector3 velocity, Vector3 angular_velocity, Vector3 goal_position)
+                Vector3 velocity, Vector3 angular_velocity, Vector3 goal_position,
+                Vector3 up, Vector3 position, Vector3 forward)
             {
                 _dl_s_s_f = dl_s_s_f;
                 _dr_s_s_f = dr_s_s_f;
@@ -60,13 +66,15 @@ public class Manager : MonoBehaviour
                 _velocity = velocity;
                 _angular_velocity = angular_velocity;
                 _goal_position = goal_position;
+                _up = up;
+                _position = position;
+                _forward = forward;
             }
         }
         public bool IsChanged { get; private set; }
         public bool IsDropped { get; private set; }
         public bool IsResetted { get; private set; }
         public bool IsCurrentStateGetted { get; private set; }
-        public bool IsUpdated;
 
         /*
          * 0 - Left Back
@@ -120,6 +128,7 @@ public class Manager : MonoBehaviour
         {
             _current_state_mutex.WaitOne();
             //
+            float pr_angle = ((DroneInformation)_current_state)._angle;
             _current_state = new DroneInformation(
                 _wrapped_entity._slider_controller._dl_slider.value,
                 _wrapped_entity._slider_controller._dr_slider.value,
@@ -128,10 +137,14 @@ public class Manager : MonoBehaviour
                 _wrapped_entity.IsCollision,
                 _wrapped_entity.IsTrigger,
                 _wrapped_entity.transform.localPosition,
-                 _wrapped_entity.transform.rotation,
+                _wrapped_entity.transform.rotation,
                 _wrapped_entity._d_body.velocity,
                 _wrapped_entity._d_body.angularVelocity,
-                _wrapped_entity._target.transform.position);
+                _wrapped_entity._target.transform.position,
+                _wrapped_entity.transform.up,
+                _wrapped_entity.transform.position,
+                _wrapped_entity.transform.forward);
+            ((DroneInformation)_current_state)._angle = pr_angle;
             IsCurrentStateGetted = false;
             _current_state_mutex.ReleaseMutex();
         }
@@ -152,7 +165,26 @@ public class Manager : MonoBehaviour
             IsDropped = false;
             IsResetted = false;
             IsCurrentStateGetted = false;
-            IsUpdated = _wrapped_entity.IsUpdated;
+
+            _current_state = new DroneInformation(
+                0.3f,
+                0.3f,
+                0.3f,
+                0.3f,
+                _wrapped_entity.IsCollision,
+                _wrapped_entity.IsTrigger,
+                _wrapped_entity.transform.localPosition,
+                _wrapped_entity.transform.rotation,
+                _wrapped_entity._d_body.velocity,
+                _wrapped_entity._d_body.angularVelocity,
+                _wrapped_entity._target.transform.position,
+                _wrapped_entity.transform.up,
+                _wrapped_entity.transform.position,
+                _wrapped_entity.transform.forward);
+
+
+            ((DroneInformation)_current_state)._angle = 181;
+            ((DroneInformation)_current_state)._pr_angle = 181;
         }
 
         public IEnumerable<int> ChangeSliderValue(List<double> value)
@@ -187,10 +219,6 @@ public class Manager : MonoBehaviour
             IsResetted = true;
             _reset_mutex.ReleaseMutex();
             while (IsResetted)
-            {
-                yield return 0;
-            }
-            while (!IsUpdated)
             {
                 yield return 0;
             }
@@ -237,7 +265,6 @@ public class Manager : MonoBehaviour
         {
             _driver.CallGetCurrentState();
         }
-        _driver.IsUpdated = _drone.IsUpdated;
     }
 
     void Update()
@@ -260,11 +287,10 @@ public class Manager : MonoBehaviour
         _agent.UpdateAdaptive<RightBackUp>();
         //_agent.UpdateAdaptive<NullAction>();
 
-        //_agent.Import();
+        _agent.Import();
 
         _agent.CreateAdaptiveBehavior();
-
-        _agent.Save();
+        //_agent.Save();
         return;
     }
 }
